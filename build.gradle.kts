@@ -69,11 +69,11 @@ configure(subprojects) {
         // By default, only the core module is included
         implementation("org.jetbrains.academy.test.system:core:2.0.5")
 
-        val junitJupiterVersion = "5.9.0"
-        implementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-        runtimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-        implementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
-        runtimeOnly("org.junit.platform:junit-platform-console:1.9.0")
+//        val junitJupiterVersion = "5.9.0"
+//        implementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
+//        runtimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+//        implementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
+//        runtimeOnly("org.junit.platform:junit-platform-console:1.9.0")
 
         val detektVersion = "1.22.0"
         implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
@@ -95,7 +95,7 @@ configure(subprojects) {
 
         // This part is necessary for the JetBrains Academy plugin
         withType<Test> {
-            useJUnitPlatform()
+//            useJUnitPlatform()
 
             outputs.upToDateWhen { false }
 
