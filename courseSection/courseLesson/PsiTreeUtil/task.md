@@ -1,0 +1,1 @@
+If you want to find all method declarations within a class using PsiTreeUtil, which class type should you specify in the findChildrenOfType method?

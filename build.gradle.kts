@@ -10,7 +10,10 @@ plugins {
     val kotlinVersion = "1.9.0"
     id("org.jetbrains.kotlin.jvm") version kotlinVersion apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.1"
+    id("org.jetbrains.intellij") version "1.16.1"
 }
+
+
 
 val detektReportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
     output.set(rootProject.buildDir.resolve("reports/detekt/merge.sarif"))
@@ -25,6 +28,7 @@ allprojects {
         }
     }
 }
+
 
 tasks {
     wrapper {

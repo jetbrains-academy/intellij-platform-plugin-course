@@ -1,0 +1,16 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: PsiFile
+    is_correct: false
+  - text: PsiMethod
+    is_correct: true
+  - text: PsiVariable
+    is_correct: false
+  - text: PsiClass
+    is_correct: false
+message_incorrect: Almost there! The key is to match the element type you're searching for with the corresponding PSI class. In PsiTreeUtil.findChildrenOfType, the class type parameter determines what kind of PSI elements you'll find.
+files:
+  - name: src/Main.kt
+    visible: true
+
