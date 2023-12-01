@@ -13,7 +13,13 @@ plugins {
     id("org.jetbrains.intellij") version "1.16.1"
 }
 
-
+intellij {
+    version.set("2023.1.2")
+    type.set("IC")
+    plugins.set(listOf("com.intellij.java", "org.jetbrains.kotlin"))
+    downloadSources.set(true)
+    updateSinceUntilBuild.set(true)
+}
 
 val detektReportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
     output.set(rootProject.buildDir.resolve("reports/detekt/merge.sarif"))
@@ -117,6 +123,35 @@ configure(subprojects) {
 
 // We have to store tests inside test folder directly
 configure(subprojects.filter { it.name != "common" }) {
+    apply {
+        plugin("org.jetbrains.intellij")
+    }
+
+    intellij {
+        version.set("2023.1.2")
+        type.set("IC")
+        plugins.set(listOf("com.intellij.java", "org.jetbrains.kotlin"))
+        downloadSources.set(true)
+        updateSinceUntilBuild.set(true)
+    }
+
+    val jvmVersion = gradleProperties("jvmVersion").get()
+    tasks {
+        withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+            kotlinOptions {
+                jvmTarget = jvmVersion
+            }
+        }
+
+        withType<JavaCompile> {
+            sourceCompatibility = jvmVersion
+            targetCompatibility = jvmVersion
+        }
+
+        withType<org.jetbrains.intellij.tasks.BuildSearchableOptionsTask>()
+            .forEach { it.enabled = false }
+    }
+
     sourceSets {
         getByName("main").java.srcDirs("src")
         getByName("test").java.srcDirs("test")

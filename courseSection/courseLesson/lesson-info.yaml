@@ -3,6 +3,5 @@ content:
   - theoryTask
   - quizTask
   - programmingTask
-  - Intro to Psi
-  - PsiTreeUtil
-  - Find Number of Classes
+  - introductionToPsiTask
+  - findNumberOfClassesTask
