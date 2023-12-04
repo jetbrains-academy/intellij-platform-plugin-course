@@ -1,0 +1,15 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: org.jetbrains.kotlin.psi.KtClass
+    is_correct: true
+  - text: org.jetbrains.kotlin.psi.KtNamedFunction
+    is_correct: true
+  - text: org.jetbrains.kotlin.psi.KtConstantExpression
+    is_correct: false
+  - text: org.jetbrains.kotlin.psi.KtNamedReferenceExpression
+    is_correct: true
+files:
+  - name: src/Person.kt
+    visible: true
+local_check: true
