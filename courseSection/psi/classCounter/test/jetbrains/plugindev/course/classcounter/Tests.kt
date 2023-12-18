@@ -1,3 +1,5 @@
+package jetbrains.plugindev.course.classcounter
+
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class Test : BasePlatformTestCase() {

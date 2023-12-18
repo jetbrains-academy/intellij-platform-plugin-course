@@ -1,3 +1,5 @@
+package jetbrains.plugindev.course.editpsi
+
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.psi.PsiFile
 import com.intellij.psi.util.PsiTreeUtil

@@ -1,3 +1,5 @@
+package jetbrains.plugindev.course.addpsi
+
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.project.Project
 import com.intellij.psi.JavaPsiFacade
@@ -60,12 +62,13 @@ private fun shouldAddOverrideAnnotation(psiMethod: PsiMethod): Boolean {
         for (superMethod in superMethods) {
             if (superMethod.name == methodName
                 && superMethod.parameterList.parameters.map { it.type } == parameterTypes
-                && isReturnTypeCompatible(superMethod.returnType, psiMethod.returnType)) {
+                && isReturnTypeCompatible(superMethod.returnType, psiMethod.returnType)
+            ) {
                 return true
             }
         }
     }
-    return false;
+    return false
 }
 
 private fun isReturnTypeCompatible(superReturnType: PsiType?, subReturnType: PsiType?): Boolean {

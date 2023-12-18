@@ -1,6 +1,6 @@
 type: edu
 files:
-  - name: src/Task.kt
+  - name: src/jetbrains/plugindev/course/addpsi/Task.kt
     visible: true
-  - name: test/Tests.kt
+  - name: test/jetbrains/plugindev/course/addpsi/Tests.kt
     visible: false

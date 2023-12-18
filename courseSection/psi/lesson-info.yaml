@@ -3,6 +3,6 @@ content:
   - What is PSI
   - Try PSI Viewer
   - Accessing PSI Elements
-  - Count number of classes
+  - classCounter
   - editPSI
   - addPSI

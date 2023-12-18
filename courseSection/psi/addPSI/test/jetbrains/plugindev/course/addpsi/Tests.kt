@@ -1,9 +1,10 @@
+package jetbrains.plugindev.course.addpsi
+
 import com.intellij.ide.highlighter.JavaFileType
 import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiMethod
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import junit.framework.TestCase
 import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtNamedFunction
 

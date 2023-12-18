@@ -1,3 +1,5 @@
+package jetbrains.plugindev.course.editpsi
+
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import org.jetbrains.kotlin.psi.KtNamedFunction
