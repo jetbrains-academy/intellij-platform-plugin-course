@@ -1,6 +1,0 @@
-type: edu
-files:
-  - name: src/jetbrains/plugindev/course/editpsi/Task.kt
-    visible: true
-  - name: test/jetbrains/plugindev/course/editpsi/Tests.kt
-    visible: false

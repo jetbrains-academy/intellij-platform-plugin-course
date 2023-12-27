@@ -1,8 +1,9 @@
 custom_name: PSI
 content:
-  - What is PSI
-  - Try PSI Viewer
-  - Accessing PSI Elements
-  - classCounter
-  - editPSI
-  - addPSI
+  - IntroToPsi
+  - TryPsiViewer
+  - AccessingPsiElements
+  - ClassCounter
+  - EditPSI
+  - SortMethods
+  - AddAnnotations
