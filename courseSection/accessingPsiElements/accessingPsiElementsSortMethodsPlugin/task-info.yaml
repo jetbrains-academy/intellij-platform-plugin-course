@@ -1,0 +1,13 @@
+type: edu
+custom_name: Psi Manipulation Basics
+files:
+  - name: src/main/kotlin/jetbrains/academy/plugindev/course/access/PsiElementsSorter.kt
+    visible: true
+  - name: src/main/kotlin/jetbrains/academy/plugindev/course/access/FunctionNameChanger.kt
+    visible: true
+  - name: src/main/kotlin/jetbrains/academy/plugindev/course/access/ElementsCounter.kt
+    visible: true
+  - name: test/Tests.kt
+    visible: false
+  - name: src/main/kotlin/jetbrains/academy/plugindev/course/access/AnnotationBuilder.kt
+    visible: true
