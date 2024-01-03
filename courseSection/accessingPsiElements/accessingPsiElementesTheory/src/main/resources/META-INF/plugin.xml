@@ -1,0 +1,16 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>jetbrains.academy.plugin.course.dev.ui.demo</id>
+    <name>IDE Development Course Demo</name>
+    <vendor>JetBrains</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="IdeDevCourseDemo" displayType="BALLOON"/>
+
+        <toolWindow doNotActivateOnStart="true"
+                    factoryClass="jetbrains.academy.plugin.course.dev.ui.DemoPanelFactory"
+                    id="IDECourseDemo" anchor="right"/>
+    </extensions>
+</idea-plugin>

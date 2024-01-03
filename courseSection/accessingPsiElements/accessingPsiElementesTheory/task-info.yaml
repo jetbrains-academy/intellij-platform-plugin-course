@@ -9,3 +9,11 @@ files:
     visible: true
   - name: src/main/kotlin/jetbrains/academy/plugin/course/dev/access/PsiElementsSorter.kt
     visible: true
+  - name: src/main/kotlin/jetbrains/academy/plugin/course/dev/ui/DemoPanelFactory.kt
+    visible: false
+  - name: src/main/kotlin/jetbrains/academy/plugin/course/dev/ui/DemoPanelService.kt
+    visible: false
+  - name: src/main/kotlin/jetbrains/academy/plugin/course/dev/ui/DemoPanelWindow.kt
+    visible: false
+  - name: src/main/resources/META-INF/plugin.xml
+    visible: false

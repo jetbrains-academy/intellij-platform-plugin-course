@@ -2,7 +2,6 @@ package jetbrains.academy.plugin.course.dev.access
 
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.project.Project
-import com.intellij.psi.JavaPsiFacade
 import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiMethod
 import com.intellij.psi.PsiType
@@ -13,14 +12,14 @@ private fun addOverrideAnnotation(psiMethod: PsiMethod, project: Project) {
     TODO("Not implemented yet")
 }
 
-fun addAnnotations(psiFile: PsiFile){
+fun addAnnotations(psiFile: PsiFile) {
     val project = psiFile.project
     WriteCommandAction.runWriteCommandAction(project) {
         val psiMethods = PsiTreeUtil.findChildrenOfType(psiFile, PsiMethod::class.java)
 
         for (psiMethod in psiMethods) {
-            if (jetbrains.academy.plugin.course.dev.access.shouldAddOverrideAnnotation(psiMethod)) {
-                jetbrains.academy.plugin.course.dev.access.addOverrideAnnotation(psiMethod, project)
+            if (shouldAddOverrideAnnotation(psiMethod)) {
+                addOverrideAnnotation(psiMethod, project)
             }
         }
     }
@@ -37,13 +36,9 @@ private fun shouldAddOverrideAnnotation(psiMethod: PsiMethod): Boolean {
     for (superClass in superClasses) {
         val superMethods = superClass.methods
         for (superMethod in superMethods) {
-            if (superMethod.name == methodName
-                && superMethod.parameterList.parameters.map { it.type } == parameterTypes
-                && jetbrains.academy.plugin.course.dev.access.isReturnTypeCompatible(
-                    superMethod.returnType,
-                    psiMethod.returnType
-                )
-            ) {
+            if (superMethod.name == methodName && superMethod.parameterList.parameters.map { it.type } == parameterTypes && isReturnTypeCompatible(
+                    superMethod.returnType, psiMethod.returnType
+                )) {
                 return true
             }
         }
