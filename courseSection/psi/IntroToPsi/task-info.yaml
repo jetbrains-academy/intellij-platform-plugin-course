@@ -1,5 +1,5 @@
 type: theory
 custom_name: What is PSI?
 files:
-  - name: src/main/kotlin/jetbrains/academy/plugindev/course/intro/Person.kt
+  - name: src/main/kotlin/jetbrains/academy/plugind/course/dev/intro/Person.kt
     visible: true
