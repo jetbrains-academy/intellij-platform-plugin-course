@@ -11,7 +11,7 @@ class DemoPanelWindow(service: DemoPanelService) {
         get() = windowBrowser.component
 
     init {
-        // TODO: load the panel's content
+        // TODO load the panel's content
         Disposer.register(service, windowBrowser)
     }
 }

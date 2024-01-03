@@ -18,7 +18,7 @@ class DemoPanelFactory : ToolWindowFactory {
     }
 
 
-    // TODO: use UI bundle instead of a string here?
+    // TODO use UI bundle instead of a string here?
     private val runTaskMethodButton = JButton("Run task function").apply {
         isBorderPainted = false
         isVisible = true
@@ -37,13 +37,13 @@ class DemoPanelFactory : ToolWindowFactory {
         }
         toolWindow.component.add(panel)
 
-        // TODO: add another listener? This example as a demo for now
+        // TODO add another listener? This example as a demo for now
         runTaskMethodButton.setListener {
             NotificationGroupManager.getInstance().getNotificationGroup(DEMO_PLUGIN_NOTIFICATION)
                 .createNotification("This panel demonstrates how the plugin works. The current task is a theory task, the plugin does nothing.", NotificationType.INFORMATION)
                 .notify(project)
         }
-        // TODO: add an action to the button
+        // TODO add an action to the button
     }
 
     private fun JButton.setListener(listener: ActionListener) {
