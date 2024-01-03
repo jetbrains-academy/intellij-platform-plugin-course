@@ -1,0 +1,5 @@
+type: theory
+custom_name: Accessing PSI Elements
+files:
+  - name: src/jetbrains/plugindev/course/access/Main.kt
+    visible: true

@@ -1,0 +1,11 @@
+type: edu
+custom_name: Psi Manipulation Advanced
+files:
+  - name: src/org/jetbrains/academy/ij/plugin/course/annotations/Task.kt
+    visible: true
+    placeholders:
+      - offset: 871
+        length: 247
+        placeholder_text: TODO()
+  - name: test/org/jetbrains/academy/ij/plugin/course/annotations/Tests.kt
+    visible: false

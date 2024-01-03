@@ -10,6 +10,15 @@ plugins {
     val kotlinVersion = "1.9.0"
     id("org.jetbrains.kotlin.jvm") version kotlinVersion apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.1"
+    id("org.jetbrains.intellij") version "1.16.1"
+}
+
+intellij {
+    version.set("2023.1.2")
+    type.set("IC")
+    plugins.set(listOf("com.intellij.java", "org.jetbrains.kotlin"))
+    downloadSources.set(true)
+    updateSinceUntilBuild.set(true)
 }
 
 val detektReportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
@@ -25,6 +34,7 @@ allprojects {
         }
     }
 }
+
 
 tasks {
     wrapper {
@@ -59,12 +69,6 @@ configure(subprojects) {
         // By default, only the core module is included
         implementation("org.jetbrains.academy.test.system:core:2.0.5")
 
-        val junitJupiterVersion = "5.9.0"
-        implementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-        runtimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-        implementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
-        runtimeOnly("org.junit.platform:junit-platform-console:1.9.0")
-
         val detektVersion = "1.22.0"
         implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
         implementation("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
@@ -85,8 +89,6 @@ configure(subprojects) {
 
         // This part is necessary for the JetBrains Academy plugin
         withType<Test> {
-            useJUnitPlatform()
-
             outputs.upToDateWhen { false }
 
             addTestListener(object : TestListener {
@@ -113,6 +115,35 @@ configure(subprojects) {
 
 // We have to store tests inside test folder directly
 configure(subprojects.filter { it.name != "common" }) {
+    apply {
+        plugin("org.jetbrains.intellij")
+    }
+
+    intellij {
+        version.set("2023.1.2")
+        type.set("IC")
+        plugins.set(listOf("com.intellij.java", "org.jetbrains.kotlin"))
+        downloadSources.set(true)
+        updateSinceUntilBuild.set(true)
+    }
+
+    val jvmVersion = gradleProperties("jvmVersion").get()
+    tasks {
+        withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+            kotlinOptions {
+                jvmTarget = jvmVersion
+            }
+        }
+
+        withType<JavaCompile> {
+            sourceCompatibility = jvmVersion
+            targetCompatibility = jvmVersion
+        }
+
+        withType<org.jetbrains.intellij.tasks.BuildSearchableOptionsTask>()
+            .forEach { it.enabled = false }
+    }
+
     sourceSets {
         getByName("main").java.srcDirs("src")
         getByName("test").java.srcDirs("test")

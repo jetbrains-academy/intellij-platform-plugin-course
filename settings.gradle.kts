@@ -1,4 +1,4 @@
-rootProject.name = "JetBrains Academy Kotlin course template"
+rootProject.name = "JetBrains Academy IntelliJ IDEA Plugin Development Course"
 
 pluginManagement {
     repositories {
@@ -7,7 +7,7 @@ pluginManagement {
         mavenCentral()
 
         // To be able to use the Kotlin test framework for the tests - https://github.com/jetbrains-academy/kotlin-test-framework
-        maven(url = "https://packages.jetbrains.team/maven/p/kotlin-test-framework/kotlin-test-framework")
+//        maven(url = "https://packages.jetbrains.team/maven/p/kotlin-test-framework/kotlin-test-framework")
     }
 }
 
