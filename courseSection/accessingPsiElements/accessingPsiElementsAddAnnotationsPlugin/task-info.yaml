@@ -1,10 +1,10 @@
 type: edu
 custom_name: Psi Manipulation Advanced
 files:
-  - name: test/Tests.kt
-    visible: false
   - name: src/main/kotlin/jetbrains/academy/plugin/course/dev/access/AnnotationBuilder.kt
     visible: true
+  - name: test/Tests.kt
+    visible: false
   - name: src/main/kotlin/jetbrains/academy/plugin/course/dev/access/ElementsCounter.kt
     visible: true
   - name: src/main/kotlin/jetbrains/academy/plugin/course/dev/access/FunctionNameChanger.kt

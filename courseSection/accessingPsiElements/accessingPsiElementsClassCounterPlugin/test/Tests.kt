@@ -1,5 +1,5 @@
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import jetbrains.academy.plugindev.course.access.countKtClasses
+import jetbrains.academy.plugin.course.dev.access.countKtClasses
 
 class Test : BasePlatformTestCase() {
 
