@@ -1,0 +1,9 @@
+custom_name: PSI
+content:
+  - IntroToPsi
+  - TryPsiViewer
+  - AccessingPsiElements
+  - ClassCounter
+  - EditPSI
+  - SortMethods
+  - AddAnnotations
