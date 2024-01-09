@@ -1,9 +1,6 @@
-custom_name: PSI
+type: framework
+custom_name: Introduction to PSI
 content:
   - IntroToPsi
   - TryPsiViewer
-  - AccessingPsiElements
-  - ClassCounter
-  - EditPSI
-  - SortMethods
-  - AddAnnotations
+is_template_based: false
