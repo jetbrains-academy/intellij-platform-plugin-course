@@ -10,6 +10,7 @@ options:
   - text: org.jetbrains.kotlin.psi.KtNamedReferenceExpression
     is_correct: true
 files:
-  - name: src/main/kotlin/jetbrains/academy/plugind/course/dev/intro/Person.kt
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/intro/Person.kt
     visible: true
 custom_name: Try Psi Viewer
+local_check: true

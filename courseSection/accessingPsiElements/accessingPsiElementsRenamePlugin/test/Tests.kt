@@ -1,6 +1,6 @@
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import jetbrains.academy.plugin.course.dev.access.editFunctionName
+import org.jetbrains.academy.plugin.course.dev.access.editFunctionName
 import org.jetbrains.kotlin.psi.KtNamedFunction
 class Test : BasePlatformTestCase() {
 
