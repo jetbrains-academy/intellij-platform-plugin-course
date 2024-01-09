@@ -1,6 +1,7 @@
+package org.jetbrains.academy.plugin.course.dev.access
+
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import org.jetbrains.academy.plugin.course.dev.access.sortMethods
 import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtNamedFunction
 

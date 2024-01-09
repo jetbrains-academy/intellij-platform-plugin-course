@@ -1,3 +1,5 @@
+package org.jetbrains.academy.plugin.course.dev.access
+
 import com.intellij.ide.highlighter.JavaFileType
 import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiMethod
