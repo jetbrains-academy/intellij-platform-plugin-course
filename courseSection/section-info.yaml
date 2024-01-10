@@ -2,3 +2,5 @@ custom_name: PSI
 content:
   - psi
   - accessingPsiElements
+  - IntroToPsi
+  - PracticePsiElements

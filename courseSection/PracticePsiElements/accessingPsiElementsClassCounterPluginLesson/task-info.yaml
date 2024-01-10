@@ -1,0 +1,7 @@
+type: edu
+custom_name: Count number of classes
+files:
+  - name: test/org/jetbrains/academy/plugin/course/dev/access/Tests.kt
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/access/ElementsCounter.kt
+    visible: true
