@@ -1,6 +1,0 @@
-type: framework
-custom_name: Introduction to PSI
-content:
-  - IntroToPsi
-  - TryPsiViewer
-is_template_based: false

@@ -1,0 +1,5 @@
+type: lesson
+custom_name: Introduction to PSI
+content:
+  - IntroToPsiLesson
+  - TryPsiViewerLesson
