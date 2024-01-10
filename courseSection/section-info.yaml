@@ -1,6 +1,6 @@
 custom_name: PSI
 content:
-  - psi
-  - accessingPsiElements
-  - IntroToPsi
-  - PracticePsiElements
+  - introductionToPsiLesson
+  - accessingPsiElementsLesson
+  - editingPsiElementsLesson
+  - addingPsiElementsLesson

@@ -1,8 +1,0 @@
-type: lesson
-custom_name: Practice with PSI Elements
-content:
-  - accessingPsiElementsTheoryLesson
-  - accessingPsiElementsClassCounterPluginLesson
-  - accessingPsiElementsRenamePluginLesson
-  - accessingPsiElementsSortMethodsPluginLesson
-  - accessingPsiElementsAddAnnotationsPluginLesson
