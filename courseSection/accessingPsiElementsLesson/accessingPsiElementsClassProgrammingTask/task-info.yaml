@@ -5,3 +5,11 @@ files:
     visible: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/access/ElementsCounter.kt
     visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/ui/DemoPanelService.kt
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/ui/DemoPanelWindow.kt
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/ui/DemoPanelFactory.kt
+    visible: false
+  - name: src/main/resources/META-INF/plugin.xml
+    visible: false
