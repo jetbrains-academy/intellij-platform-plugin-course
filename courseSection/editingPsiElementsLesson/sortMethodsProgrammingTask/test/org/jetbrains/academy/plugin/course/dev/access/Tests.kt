@@ -26,8 +26,6 @@ class Test : BasePlatformTestCase() {
             
         """.trimIndent()
         val file = myFixture.configureByText("Person.kt", fileContent)
-        sortMethods(file)
-
         val classes = PsiTreeUtil.findChildrenOfType(file, KtClass::class.java)
         for (ktClass in classes) {
             val methods = ktClass.declarations.filterIsInstance<KtNamedFunction>()

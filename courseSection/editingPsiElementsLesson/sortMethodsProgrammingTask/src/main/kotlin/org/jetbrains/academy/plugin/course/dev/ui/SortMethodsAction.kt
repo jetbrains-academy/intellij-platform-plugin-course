@@ -6,20 +6,20 @@ import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.command.WriteCommandAction
 import org.jetbrains.academy.plugin.course.dev.access.sortMethods
 import org.jetbrains.kotlin.psi.KtClass
+import org.jetbrains.kotlin.psi.KtFile
 
 class SortMethodsAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
-        val project = e.project ?: return
-        val editor = e.getData(CommonDataKeys.EDITOR) ?: return
-        val psiFile = e.getData(CommonDataKeys.PSI_FILE) ?: return
+        val project = e.project
+        val editor = e.getData(CommonDataKeys.EDITOR)
+        val psiFile = e.getData(CommonDataKeys.PSI_FILE) as? KtFile
+
+        if (project == null || editor == null || psiFile == null) return
 
         val caret = editor.caretModel.currentCaret
-        val element = psiFile.findElementAt(caret.offset) ?: return
+        val element = psiFile.findElementAt(caret.offset)
 
-        val ktClass = element.parent as? KtClass ?: return
-
-        // Call your method sorting function here
-        // sortMethodsInClass(ktClass)
+        val ktClass = element?.parent as? KtClass ?: return
 
         WriteCommandAction.runWriteCommandAction(project) {
             // Execute your sorting logic here
