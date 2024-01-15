@@ -1,0 +1,23 @@
+<idea-plugin>
+    <id>jetbrains.academy.plugin.course.dev.ui.demo</id>
+    <name>IDE Development Course Demo</name>
+    <vendor>JetBrains</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.kotlin</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="IdeDevCourseDemo" displayType="BALLOON"/>
+
+    </extensions>
+    <actions>
+        <!-- Add your action here -->
+        <action id="SortMethods"
+                class="org.jetbrains.academy.plugin.course.dev.ui.SortMethodsAction"
+                text="Sort Methods"
+                description="Sort methods inside this class">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+
+</idea-plugin>

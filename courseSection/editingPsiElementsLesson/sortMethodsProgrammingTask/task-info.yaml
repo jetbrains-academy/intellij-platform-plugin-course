@@ -5,3 +5,7 @@ files:
     visible: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/access/PsiElementsSorter.kt
     visible: true
+  - name: src/main/resources/META-INF/plugin.xml
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/ui/SortMethodsAction.kt
+    visible: false
