@@ -12,7 +12,7 @@ import com.intellij.ui.components.JBPanel
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.table.JBTable
 import com.intellij.util.ui.JBUI
-import org.jetbrains.academy.plugin.course.dev.access.countKtClasses
+import org.jetbrains.academy.plugin.course.dev.access.countKtFunctions
 import org.jetbrains.kotlin.idea.KotlinLanguage
 import java.awt.BorderLayout
 import java.awt.FlowLayout
@@ -65,10 +65,16 @@ class DemoPanelFactory : ToolWindowFactory {
             // Creating a virtual file with Kotlin content
             val tempVfsFile = WriteAction.compute<LightVirtualFile, Exception> {
                 LightVirtualFile("MyClass.kt", KotlinLanguage.INSTANCE, """
-            class MyFirstClass {
+            fun topLevelFunction1() {
+                // Function implementation
             }
 
-            class MySecondClass {
+            fun topLevelFunction2() {
+                // Function implementation
+            }
+            
+            fun topLevelFunction3() {
+                // Function implementation
             }
         """.trimIndent())
             }
@@ -78,11 +84,11 @@ class DemoPanelFactory : ToolWindowFactory {
 
             // Call your function and get the result
             psiFile?.let {
-                val result = countKtClasses(it)
+                val result = countKtFunctions(it)
 
                 // Display the result in the table
                 tableModel.setRowCount(0)
-                tableModel.addRow(arrayOf("Class", result.toString(), 2))
+                tableModel.addRow(arrayOf("Function", result.toString(), 3))
             }
 
         }
