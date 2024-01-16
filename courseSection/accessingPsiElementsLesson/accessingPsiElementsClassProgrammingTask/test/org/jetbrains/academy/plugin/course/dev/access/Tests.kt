@@ -16,6 +16,7 @@ class Test : BasePlatformTestCase() {
         val file = myFixture.configureByText("MyClass.kt", fileContent)
 
         val psiClassesCount = countKtClasses(file)
-        assertEquals("For the Kotlin file with content $fileContent the function countKtClasses should return 2, but currently it returns $psiClassesCount", 2, psiClassesCount)
+        val authorClassesCount = authorCountKtClasses(file)
+        assertEquals("For the Kotlin file with content $fileContent the function countKtClasses should return 2, but currently it returns $psiClassesCount", authorClassesCount, psiClassesCount)
     }
 }

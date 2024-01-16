@@ -28,6 +28,7 @@ class Test : BasePlatformTestCase() {
         val file = myFixture.configureByText("Person.kt", fileContent)
         val classes = PsiTreeUtil.findChildrenOfType(file, KtClass::class.java)
         for (ktClass in classes) {
+            sortMethods(ktClass)
             val methods = ktClass.declarations.filterIsInstance<KtNamedFunction>()
             val sorted = methods.sortedBy { it.name }
             assertEquals(

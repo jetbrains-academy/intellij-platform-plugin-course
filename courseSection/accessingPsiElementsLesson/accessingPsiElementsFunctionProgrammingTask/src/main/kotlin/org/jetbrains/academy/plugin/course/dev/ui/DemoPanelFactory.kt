@@ -11,6 +11,7 @@ import com.intellij.ui.components.JBPanel
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.table.JBTable
 import com.intellij.util.ui.JBUI
+import org.jetbrains.academy.plugin.course.dev.access.authorCountKtFunctions
 import org.jetbrains.academy.plugin.course.dev.access.countKtFunctions
 import java.awt.BorderLayout
 import java.awt.FlowLayout
@@ -67,10 +68,10 @@ class DemoPanelFactory : ToolWindowFactory {
 
             psiFile?.let {
                 val result = countKtFunctions(it)
-
+                val authorResult = authorCountKtFunctions(it)
                 // Display the result in the table
                 tableModel.setRowCount(0)
-                tableModel.addRow(arrayOf("Class", result.toString(), 2))
+                tableModel.addRow(arrayOf("Function", result.toString(), authorResult.toString()))
             }
         }
     }

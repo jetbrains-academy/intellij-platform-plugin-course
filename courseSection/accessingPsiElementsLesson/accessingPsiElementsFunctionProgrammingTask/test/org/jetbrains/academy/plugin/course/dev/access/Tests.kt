@@ -40,6 +40,7 @@ object MyObject {
         val file = myFixture.configureByText("MyClass.kt", fileContent)
 
         val psiFunctionsCount = countKtFunctions(file)
-        assertEquals("For the Kotlin file with content $fileContent the function countKtClasses should return 6, but currently it returns $psiFunctionsCount", 6, psiFunctionsCount)
+        val authorFunctionsCount = authorCountKtFunctions(file)
+        assertEquals("For the Kotlin file with content $fileContent the function countKtClasses should return 6, but currently it returns $psiFunctionsCount", authorFunctionsCount, psiFunctionsCount)
     }
 }

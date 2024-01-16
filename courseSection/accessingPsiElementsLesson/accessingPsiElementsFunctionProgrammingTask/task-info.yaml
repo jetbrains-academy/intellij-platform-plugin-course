@@ -12,3 +12,5 @@ files:
     visible: false
   - name: test/org/jetbrains/academy/plugin/course/dev/access/Tests.kt
     visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/access/AuthorElementsCounter.kt
+    visible: false
