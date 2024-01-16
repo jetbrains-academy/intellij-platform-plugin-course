@@ -3,40 +3,15 @@ package org.jetbrains.academy.plugin.course.dev.access
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class Test : BasePlatformTestCase() {
+    fun getResourceFileContent(path: String): String {
+        val inputStream = Test::class.java.getResourceAsStream(path)
+        return inputStream?.bufferedReader()?.use { it.readText() } ?: ""
+    }
 
     fun testSolution() {
         // TODO: add more test cases
-        val fileContent = """
-            class MyClass {
-    fun instanceFunction1() {
-        // Function implementation
-    }
-
-    fun instanceFunction2() {
-        // Function implementation
-    }
-
-    companion object {
-        fun staticFunction1() {
-            // Function implementation
-        }
-    }
-}
-
-fun topLevelFunction1() {
-    // Function implementation
-}
-
-fun topLevelFunction2() {
-    // Function implementation
-}
-
-object MyObject {
-    fun objectFunction() {
-        // Function implementation
-    }
-}
-        """.trimIndent()
+        val path = "/sampleProject/src/main/kotlin/AccessingPsiElements/FunctionCounter/MultipleMethods.kt"
+        val fileContent = getResourceFileContent(path)
         val file = myFixture.configureByText("MyClass.kt", fileContent)
 
         val psiFunctionsCount = countKtFunctions(file)

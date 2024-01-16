@@ -3,16 +3,15 @@ package org.jetbrains.academy.plugin.course.dev.access
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class Test : BasePlatformTestCase() {
+    fun getResourceFileContent(path: String): String {
+        val inputStream = Test::class.java.getResourceAsStream(path)
+        return inputStream?.bufferedReader()?.use { it.readText() } ?: ""
+    }
 
     fun testSolution() {
         // TODO: add more test cases
-        val fileContent = """
-            class MyFirstClass {
-            }
-
-            class MySecondClass {
-            }
-        """.trimIndent()
+        val path = "/sampleProject/src/main/kotlin/AccessingPsiElements/ClassCounter/MultipleClasses.kt"
+        val fileContent = getResourceFileContent(path)
         val file = myFixture.configureByText("MyClass.kt", fileContent)
 
         val psiClassesCount = countKtClasses(file)
