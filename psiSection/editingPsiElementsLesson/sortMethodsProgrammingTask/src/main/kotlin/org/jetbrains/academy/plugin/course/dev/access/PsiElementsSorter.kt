@@ -11,7 +11,7 @@ fun sortMethods(psiFile: PsiFile) {
     WriteCommandAction.runWriteCommandAction(project) {
         val classes = PsiTreeUtil.findChildrenOfType(psiFile, KtClass::class.java)
 
-        for (ktClass in classes){
+        for (ktClass in classes) {
             val methods = ktClass.declarations.filterIsInstance<KtNamedFunction>()
             val sortedMethods = methods.sortedBy { it.name }.map { it.copy() as KtNamedFunction }
 

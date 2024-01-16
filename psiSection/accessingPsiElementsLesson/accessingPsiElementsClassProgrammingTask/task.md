@@ -1,5 +1,4 @@
-
-You need to implement a function `countKtClasses` which will 
+Using your newly gained knowledge about `PsiTreeUtil.findChildrenOfType` method, implement a function `countKtClasses` which will 
 count number of kotlin classes declared in the given kotlin PSI file.
 
 <div class="hint" title="Which class should I use as aClass parameter?">
