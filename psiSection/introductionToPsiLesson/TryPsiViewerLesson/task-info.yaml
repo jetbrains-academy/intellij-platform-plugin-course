@@ -1,5 +1,5 @@
 type: choice
-custom_name: Try PS Viewer
+custom_name: Try PSI Viewer
 is_multiple_choice: true
 options:
   - text: org.jetbrains.kotlin.psi.KtClass

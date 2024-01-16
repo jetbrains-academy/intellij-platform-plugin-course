@@ -259,8 +259,8 @@ In the `.github/workflows` directory, you can find definitions for the following
 [file:gradle.properties]: ./gradle.properties
 [file:course-info.yaml]: ./course-info.yaml
 [file:courseignore]: .courseignore
-[file:course.lesson.tests]: courseSection/psi/programmingTask/test/Tests.kt
-[file:course.framework.lesson.tests]: ./courseSection/courseFrameworkLesson/programmingTask/test/Tests.kt
+[file:course.lesson.tests]: psiSection/psi/programmingTask/test/Tests.kt
+[file:course.framework.lesson.tests]: psiSection/courseFrameworkLesson/programmingTask/test/Tests.kt
 
 [gradle]: https://gradle.org
 
