@@ -2,18 +2,16 @@ package org.jetbrains.academy.plugin.course.dev.ui
 
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
-import com.intellij.openapi.application.WriteAction
+import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
-import com.intellij.psi.PsiManager
-import com.intellij.testFramework.LightVirtualFile
+import com.intellij.psi.PsiDocumentManager
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.table.JBTable
 import com.intellij.util.ui.JBUI
 import org.jetbrains.academy.plugin.course.dev.access.countKtClasses
-import org.jetbrains.kotlin.idea.KotlinLanguage
 import java.awt.BorderLayout
 import java.awt.FlowLayout
 import java.awt.event.ActionListener
@@ -63,20 +61,11 @@ class DemoPanelFactory : ToolWindowFactory {
 
         runTaskMethodButton.addActionListener {
             // Creating a virtual file with Kotlin content
-            val tempVfsFile = WriteAction.compute<LightVirtualFile, Exception> {
-                LightVirtualFile("MyClass.kt", KotlinLanguage.INSTANCE, """
-            class MyFirstClass {
-            }
+            val editor = FileEditorManager.getInstance(project).selectedTextEditor
+            val document = editor?.document
 
-            class MySecondClass {
-            }
-        """.trimIndent())
-            }
+            val psiFile = document?.let { PsiDocumentManager.getInstance(project).getPsiFile(it) }
 
-            // Convert virtual file to PSI file
-            val psiFile = PsiManager.getInstance(project).findFile(tempVfsFile)
-
-            // Call your function and get the result
             psiFile?.let {
                 val result = countKtClasses(it)
 
@@ -84,7 +73,6 @@ class DemoPanelFactory : ToolWindowFactory {
                 tableModel.setRowCount(0)
                 tableModel.addRow(arrayOf("Class", result.toString(), 2))
             }
-
         }
     }
 
