@@ -2,5 +2,4 @@ type: framework
 custom_name: Accessing PSI Elements
 content:
   - accessingPsiElementsTheoryTask
-  - accessingPsiElementsClassProgrammingTask
-  - accessingPsiElementsFunctionProgrammingTask
+  - accessingPsiElementsProgrammingTask
