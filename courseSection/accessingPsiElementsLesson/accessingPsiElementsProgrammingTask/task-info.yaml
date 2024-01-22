@@ -3,15 +3,15 @@ custom_name: Count Number of specific Elements
 files:
   - name: test/org/jetbrains/academy/plugin/course/dev/access/Tests.kt
     visible: false
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/access/ElementsCounter.kt
-    visible: true
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/ui/PsiElementCounterPanelService.kt
-    visible: false
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/ui/PsiElementCounterPanelWindow.kt
-    visible: false
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/ui/PsiElementCounterPanelFactory.kt
-    visible: false
   - name: src/main/resources/META-INF/plugin.xml
     visible: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/access/AuthorElementsCounter.kt
     visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/access/ElementsCounter.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/ui/PsiElementCounterPanelService.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/ui/PsiElementCounterPanelWindow.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/ui/PsiElementCounterPanelFactory.kt
+    visible: true
