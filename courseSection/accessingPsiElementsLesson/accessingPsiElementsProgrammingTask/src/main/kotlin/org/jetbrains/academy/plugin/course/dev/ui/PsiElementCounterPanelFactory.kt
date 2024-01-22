@@ -7,6 +7,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.psi.PsiDocumentManager
+import com.intellij.psi.PsiInvalidElementAccessException
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.table.JBTable
@@ -75,9 +76,21 @@ class PsiElementCounterPanelFactory : ToolWindowFactory {
             psiFile?.let {
                 val results = mutableListOf<Array<String>>()
 
-                // Calculate class and function counts, catching exceptions
-                val classResult = try { countKtClasses(it).toString() } catch (e: Exception) { "Error" }
-                val functionResult = try { countKtFunctions(it).toString() } catch (e: Exception) { "Error" }
+                val classResult = try {
+                    countKtClasses(it).toString()
+                } catch (e: PsiInvalidElementAccessException) {
+                    "Invalid PSI Element"
+                } catch (e: NotImplementedError) {
+                    "Not implemented"
+                }
+
+                val functionResult = try {
+                    countKtFunctions(it).toString()
+                } catch (e: PsiInvalidElementAccessException) {
+                    "Invalid PSI Element"
+                } catch (e: NotImplementedError) {
+                    "Not implemented"
+                }
 
                 val classAuthorResult = authorCountKtClasses(it).toString()
                 val functionAuthorResult = authorCountKtFunctions(it).toString()
