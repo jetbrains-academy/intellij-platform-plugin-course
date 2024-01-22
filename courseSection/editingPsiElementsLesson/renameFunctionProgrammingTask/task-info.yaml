@@ -1,15 +1,7 @@
 type: edu
 custom_name: Renaming Method
 files:
-  - name: test/org/jetbrains/academy/plugin/course/dev/access/Tests.kt
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/edit/FunctionNameChanger.kt
+    visible: true
+  - name: test/org/jetbrains/academy/plugin/course/dev/edit/Tests.kt
     visible: false
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/access/FunctionNameChanger.kt
-    visible: true
-  - name: src/resources/META-INF/plugin.xml
-    visible: true
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/demo/DemoPanelService.kt
-    visible: true
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/demo/DemoPanelFactory.kt
-    visible: true
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/demo/DemoPanelWindow.kt
-    visible: true

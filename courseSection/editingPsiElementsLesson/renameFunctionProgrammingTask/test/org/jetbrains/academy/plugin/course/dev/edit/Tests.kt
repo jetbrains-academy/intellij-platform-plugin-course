@@ -1,4 +1,4 @@
-package org.jetbrains.academy.plugin.course.dev.access
+package org.jetbrains.academy.plugin.course.dev.edit
 
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.testFramework.fixtures.BasePlatformTestCase

@@ -1,11 +1,10 @@
-package org.jetbrains.academy.plugin.course.dev.access
+package org.jetbrains.academy.plugin.course.dev.add
 
 import com.intellij.ide.highlighter.JavaFileType
 import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiMethod
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
-import org.jetbrains.academy.plugin.course.dev.access.addAnnotations
 
 class Test : BasePlatformTestCase() {
 

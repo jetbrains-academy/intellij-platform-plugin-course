@@ -1,4 +1,4 @@
-package org.jetbrains.academy.plugin.course.dev.access
+package org.jetbrains.academy.plugin.course.dev.add
 
 import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.project.Project
