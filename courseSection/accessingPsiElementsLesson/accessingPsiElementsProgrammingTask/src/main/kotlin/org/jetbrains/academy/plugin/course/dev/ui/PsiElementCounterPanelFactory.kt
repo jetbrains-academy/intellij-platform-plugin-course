@@ -21,9 +21,9 @@ import java.awt.event.ActionListener
 import javax.swing.JButton
 import javax.swing.table.DefaultTableModel
 
-class DemoPanelFactory : ToolWindowFactory {
+class PsiElementCounterPanelFactory : ToolWindowFactory {
     companion object {
-        private const val DEMO_PLUGIN_NOTIFICATION = "IdeDevCourseDemo"
+        private const val DEMO_COUNTER_NOTIFICATION = "PsiElementCounter"
     }
 
 
@@ -33,15 +33,18 @@ class DemoPanelFactory : ToolWindowFactory {
         isVisible = true
     }
 
-    lateinit var demoWindow: DemoPanelWindow
+    lateinit var demoWindow: PsiElementCounterPanelWindow
     private val tableModel = DefaultTableModel()
     private val resultsTable = JBTable(tableModel)
+
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
-        demoWindow = project.getService(DemoPanelService::class.java).demoWindow
+        demoWindow = project.getService(PsiElementCounterPanelService::class.java).demoWindow
         demoWindow.jComponent.size = JBUI.size(toolWindow.component.width, toolWindow.component.height)
+
         tableModel.addColumn("PSI Element")
         tableModel.addColumn("Your Output")
         tableModel.addColumn("Expected Output")
+
         val buttonPanel = JBPanel<JBPanel<*>>(FlowLayout()).apply {
             add(runTaskMethodButton)
         }
@@ -57,7 +60,7 @@ class DemoPanelFactory : ToolWindowFactory {
 
         // TODO add another listener? This example as a demo for now
         runTaskMethodButton.setListener {
-            NotificationGroupManager.getInstance().getNotificationGroup(DEMO_PLUGIN_NOTIFICATION)
+            NotificationGroupManager.getInstance().getNotificationGroup(DEMO_COUNTER_NOTIFICATION)
                 .createNotification("This panel demonstrates how the plugin works. The current task is a theory task, the plugin does nothing.", NotificationType.INFORMATION)
                 .notify(project)
         }
@@ -70,16 +73,20 @@ class DemoPanelFactory : ToolWindowFactory {
             val psiFile = document?.let { PsiDocumentManager.getInstance(project).getPsiFile(it) }
 
             psiFile?.let {
-                val classResult = countKtClasses(it)
-                val classAuthorResult = authorCountKtClasses(it)
+                val results = mutableListOf<Array<String>>()
 
-                val functionResult = countKtFunctions(it)
-                val functionAuthorResult = authorCountKtFunctions(it)
+                // Calculate class and function counts, catching exceptions
+                val classResult = try { countKtClasses(it).toString() } catch (e: Exception) { "Error" }
+                val functionResult = try { countKtFunctions(it).toString() } catch (e: Exception) { "Error" }
 
-                // Display the result in the table
+                val classAuthorResult = authorCountKtClasses(it).toString()
+                val functionAuthorResult = authorCountKtFunctions(it).toString()
+
+                results.add(arrayOf("Class", classResult, classAuthorResult))
+                results.add(arrayOf("Function", functionResult, functionAuthorResult))
+
                 tableModel.setRowCount(0)
-                tableModel.addRow(arrayOf("Class", classResult.toString(), classAuthorResult.toString()))
-                tableModel.addRow(arrayOf("Function", functionResult.toString(), functionAuthorResult.toString()))
+                results.forEach { tableModel.addRow(it) }
             }
         }
     }

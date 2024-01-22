@@ -4,7 +4,7 @@ import com.intellij.openapi.util.Disposer
 import com.intellij.ui.jcef.JBCefBrowser
 import javax.swing.JComponent
 
-class DemoPanelWindow(service: DemoPanelService) {
+class PsiElementCounterPanelWindow(service: PsiElementCounterPanelService) {
     private val windowBrowser: JBCefBrowser = JBCefBrowser()
 
     val jComponent: JComponent

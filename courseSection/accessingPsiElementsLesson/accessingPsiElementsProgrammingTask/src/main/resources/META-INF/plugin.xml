@@ -10,7 +10,7 @@
         <notificationGroup id="IdeDevCourseDemo" displayType="BALLOON"/>
 
         <toolWindow doNotActivateOnStart="true"
-                    factoryClass="org.jetbrains.academy.plugin.course.dev.ui.DemoPanelFactory"
-                    id="IDECourseDemo" anchor="right"/>
+                    factoryClass="org.jetbrains.academy.plugin.course.dev.ui.PsiElementCounterPanelFactory"
+                    id="PsiElementsCounter" anchor="right"/>
     </extensions>
 </idea-plugin>

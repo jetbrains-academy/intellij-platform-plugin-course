@@ -6,8 +6,8 @@ class MultipleMethods {
     fun subtract(a: Int, b: Int): Int {
         return a - b
     }
-
-    private fun privateMethod() {
+    @Override
+   fun privateMethod() {
         println("This is a private method")
     }
 }
