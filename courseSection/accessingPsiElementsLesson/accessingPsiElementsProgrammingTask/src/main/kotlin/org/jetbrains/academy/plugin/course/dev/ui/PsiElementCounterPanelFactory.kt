@@ -12,6 +12,7 @@ import com.intellij.ui.components.JBPanel
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.table.JBTable
 import com.intellij.util.ui.JBUI
+import com.jetbrains.rd.util.string.print
 import org.jetbrains.academy.plugin.course.dev.access.countKtClasses
 import org.jetbrains.academy.plugin.course.dev.access.authorCountKtClasses
 import org.jetbrains.academy.plugin.course.dev.access.authorCountKtFunctions
@@ -79,16 +80,20 @@ class PsiElementCounterPanelFactory : ToolWindowFactory {
                 val classResult = try {
                     countKtClasses(it).toString()
                 } catch (e: PsiInvalidElementAccessException) {
+                    e.printStackTrace()
                     "Invalid PSI Element"
                 } catch (e: NotImplementedError) {
+                    e.printStackTrace()
                     "Not implemented"
                 }
 
                 val functionResult = try {
                     countKtFunctions(it).toString()
                 } catch (e: PsiInvalidElementAccessException) {
+                    e.printStackTrace()
                     "Invalid PSI Element"
                 } catch (e: NotImplementedError) {
+                    e.printStackTrace()
                     "Not implemented"
                 }
 
