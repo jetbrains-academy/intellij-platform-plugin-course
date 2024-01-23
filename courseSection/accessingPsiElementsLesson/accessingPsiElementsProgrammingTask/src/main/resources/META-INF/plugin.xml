@@ -1,0 +1,16 @@
+<idea-plugin>
+    <id>jetbrains.academy.plugin.course.dev.ui.demo</id>
+    <name>IDE Development Course Demo</name>
+    <vendor>JetBrains</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.kotlin</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="IdeDevCourseDemo" displayType="BALLOON"/>
+
+        <toolWindow doNotActivateOnStart="true"
+                    factoryClass="org.jetbrains.academy.plugin.course.dev.ui.PsiElementCounterPanelFactory"
+                    id="PsiElementsCounter" anchor="right"/>
+    </extensions>
+</idea-plugin>

@@ -49,3 +49,14 @@ fun runMainFunction(mainFunction: () -> Unit, input: String? = null, toAssertSys
         ""
     }
 }
+
+@Suppress("TooGenericExceptionCaught", "SwallowedException")
+fun <T> safeRunStudentCode(action: () -> T): String {
+    return try {
+        action().toString()
+    } catch (e: NotImplementedError) {
+        "Not implemented"
+    } catch (e: Exception) {
+        "Error"
+    }
+}

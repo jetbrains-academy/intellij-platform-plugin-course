@@ -1,5 +1,5 @@
 type: theory
 custom_name: How to Add PSI Elements
 files:
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/access/Task.kt
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/add/Task.kt
     visible: true

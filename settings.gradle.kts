@@ -20,6 +20,9 @@ rootProject.projectDir.walkTopDown().forEach {
     val parts = mutableListOf<String>()
     for (name in taskRelativePath) {
         parts.add(sanitizeName(name.toString()))
+        if (name.toString() == "resources") {
+            return@forEach
+        }
     }
     val moduleName = parts.joinToString("-")
     include(moduleName)
