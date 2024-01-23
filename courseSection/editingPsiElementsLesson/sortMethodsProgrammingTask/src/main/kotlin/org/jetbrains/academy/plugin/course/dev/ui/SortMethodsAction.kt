@@ -4,6 +4,7 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.command.WriteCommandAction
+import org.jetbrains.academy.kotlin.template.safeRunStudentCode
 import org.jetbrains.academy.plugin.course.dev.edit.sortMethods
 import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtFile
@@ -23,7 +24,9 @@ class SortMethodsAction : AnAction() {
 
         WriteCommandAction.runWriteCommandAction(project) {
             // Execute your sorting logic here
-            sortMethods(ktClass)
+            safeRunStudentCode {
+                sortMethods(ktClass)
+            }
         }
     }
 

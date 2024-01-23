@@ -49,3 +49,16 @@ fun runMainFunction(mainFunction: () -> Unit, input: String? = null, toAssertSys
         ""
     }
 }
+
+fun <T> safeRunStudentCode(action: () -> T): String {
+    return try {
+        action().toString()
+    } catch (e: NotImplementedError) {
+        e.printStackTrace()
+        "Not implemented"
+    } catch (e: Exception) {
+        e.printStackTrace()
+        "An error occurred while function invocation. " +
+                "Please check stacktrace for more details"
+    }
+}

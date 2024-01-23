@@ -7,16 +7,14 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.psi.PsiDocumentManager
-import com.intellij.psi.PsiInvalidElementAccessException
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.table.JBTable
 import com.intellij.util.ui.JBUI
-import com.jetbrains.rd.util.string.print
-import org.jetbrains.academy.plugin.course.dev.access.countKtClasses
+import org.jetbrains.academy.kotlin.template.safeRunStudentCode
 import org.jetbrains.academy.plugin.course.dev.access.authorCountKtClasses
 import org.jetbrains.academy.plugin.course.dev.access.authorCountKtFunctions
-import org.jetbrains.academy.plugin.course.dev.access.countKtFunctions
+import org.jetbrains.academy.plugin.course.dev.access.countKtClasses
 import java.awt.BorderLayout
 import java.awt.FlowLayout
 import java.awt.event.ActionListener
@@ -63,7 +61,10 @@ class PsiElementCounterPanelFactory : ToolWindowFactory {
         // TODO add another listener? This example as a demo for now
         runTaskMethodButton.setListener {
             NotificationGroupManager.getInstance().getNotificationGroup(DEMO_COUNTER_NOTIFICATION)
-                .createNotification("This panel demonstrates how the plugin works. The current task is a theory task, the plugin does nothing.", NotificationType.INFORMATION)
+                .createNotification(
+                    "This panel demonstrates how the plugin works. The current task is a theory task, the plugin does nothing.",
+                    NotificationType.INFORMATION
+                )
                 .notify(project)
         }
 
@@ -75,35 +76,24 @@ class PsiElementCounterPanelFactory : ToolWindowFactory {
             val psiFile = document?.let { PsiDocumentManager.getInstance(project).getPsiFile(it) }
 
             psiFile?.let {
-                val results = mutableListOf<Array<String>>()
 
-                val classResult = try {
+                val classResult = safeRunStudentCode {
                     countKtClasses(it).toString()
-                } catch (e: PsiInvalidElementAccessException) {
-                    e.printStackTrace()
-                    "Invalid PSI Element"
-                } catch (e: NotImplementedError) {
-                    e.printStackTrace()
-                    "Not implemented"
                 }
 
-                val functionResult = try {
-                    countKtFunctions(it).toString()
-                } catch (e: PsiInvalidElementAccessException) {
-                    e.printStackTrace()
-                    "Invalid PSI Element"
-                } catch (e: NotImplementedError) {
-                    e.printStackTrace()
-                    "Not implemented"
+                val functionResult = safeRunStudentCode {
+                    countKtClasses(it).toString()
                 }
 
                 val classAuthorResult = authorCountKtClasses(it).toString()
                 val functionAuthorResult = authorCountKtFunctions(it).toString()
 
-                results.add(arrayOf("Class", classResult, classAuthorResult))
-                results.add(arrayOf("Function", functionResult, functionAuthorResult))
+                val results = mutableListOf<Array<String>>(
+                    arrayOf("Class", classResult, classAuthorResult),
+                    arrayOf("Function", functionResult, functionAuthorResult)
+                )
 
-                tableModel.setRowCount(0)
+                tableModel.rowCount = 0
                 results.forEach { tableModel.addRow(it) }
             }
         }
