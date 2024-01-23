@@ -1,0 +1,12 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: "yes"
+    is_correct: true
+  - text: "no"
+    is_correct: false
+files:
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/welcome/HelloJonsi.kt
+    visible: true
+custom_name: Ready to Help Jonsi?
+local_check: true

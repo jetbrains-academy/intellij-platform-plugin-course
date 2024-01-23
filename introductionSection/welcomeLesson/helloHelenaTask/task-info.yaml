@@ -1,0 +1,7 @@
+type: edu
+custom_name: Hello Helena!
+files:
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/welcome/HelloHelena.kt
+    visible: true
+  - name: test/org/jetbrains/academy/plugin/course/dev/welcome/Tests.kt
+    visible: false
