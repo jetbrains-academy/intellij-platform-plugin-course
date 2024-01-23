@@ -4,6 +4,7 @@ language: English
 summary: TODO
 programming_language: Kotlin
 content:
-  - courseSection
+  - introductionSection
+  - psiSection
 environment_settings:
-  jvm_language_level: JDK_17
+  jvm_language_level: JDK_20
