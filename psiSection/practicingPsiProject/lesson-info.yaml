@@ -1,0 +1,8 @@
+type: framework
+custom_name: PSI final project
+content:
+  - identifyFunctionArgumentsProgrammingTask
+  - createDataClassProgrammingTask
+  - insertDataClassProgrammingTask
+  - replaceFunctionArgumentsProgrammingTask
+  - replaceFunctionBodyVariablesProgrammingTask

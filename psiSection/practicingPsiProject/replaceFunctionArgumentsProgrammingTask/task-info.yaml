@@ -1,0 +1,13 @@
+type: edu
+custom_name: Replace Function Arguments with Data Class
+files:
+  - name: src/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentReplacement.kt
+    visible: true
+  - name: src/org/jetbrains/academy/plugin/course/dev/project/DataClassCreator.kt
+    visible: true
+  - name: src/org/jetbrains/academy/plugin/course/dev/project/DataClassInserter.kt
+    visible: true
+  - name: test/org/jetbrains/academy/plugin/course/dev/project/ReplaceFunctionArgumentTest.kt
+    visible: false
+  - name: src/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentsExtraction.kt
+    visible: true

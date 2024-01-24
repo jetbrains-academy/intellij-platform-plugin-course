@@ -1,0 +1,11 @@
+type: edu
+custom_name: Insert Data Class
+files:
+  - name: src/org/jetbrains/academy/plugin/course/dev/project/DataClassInserter.kt
+    visible: true
+  - name: src/org/jetbrains/academy/plugin/course/dev/project/DataClassCreator.kt
+    visible: true
+  - name: test/org/jetbrains/academy/plugin/course/dev/project/InsertDataClassTest.kt
+    visible: false
+  - name: src/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentsExtraction.kt
+    visible: true

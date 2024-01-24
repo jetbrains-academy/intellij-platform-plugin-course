@@ -1,0 +1,9 @@
+type: edu
+custom_name: Create data class
+files:
+  - name: src/org/jetbrains/academy/plugin/course/dev/project/DataClassCreator.kt
+    visible: true
+  - name: test/org/jetbrains/academy/plugin/course/dev/project/Tests.kt
+    visible: false
+  - name: src/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentsExtraction.kt
+    visible: true
