@@ -1,0 +1,5 @@
+type: theory
+custom_name: Enable Internal Mode
+files:
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/setup/Main.kt
+    visible: true
