@@ -7,7 +7,6 @@ import org.jetbrains.kotlin.psi.KtNamedFunction
 class GenerateDataClassTest : BasePlatformTestCase() {
 
     fun testGenerateDataClassFromFunction() {
-        // Initialize the Kotlin PSI factory
         val fileContent = """
             fun testFunction1(param1: String, param2: Int) {
     // Function body
@@ -17,7 +16,7 @@ class GenerateDataClassTest : BasePlatformTestCase() {
         val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
         for (ktFunction in functions) {
             val arguments = extractFunctionArguments(ktFunction)
-            val dataClass = createDataClass(arguments)
+            val dataClass = createDataClass("DataClass", arguments)
             val expectedDataClass = """
                 data class DataClass(
                     val param1: String,

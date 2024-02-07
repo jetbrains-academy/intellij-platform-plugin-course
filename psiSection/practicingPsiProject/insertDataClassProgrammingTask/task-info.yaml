@@ -1,11 +1,15 @@
 type: edu
 custom_name: Insert Data Class
 files:
-  - name: src/org/jetbrains/academy/plugin/course/dev/project/DataClassInserter.kt
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/DataClassInserter.kt
     visible: true
-  - name: src/org/jetbrains/academy/plugin/course/dev/project/DataClassCreator.kt
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentsExtraction.kt
     visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/DataClassCreator.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/InsertDataClassAction.kt
+    visible: false
   - name: test/org/jetbrains/academy/plugin/course/dev/project/InsertDataClassTest.kt
     visible: false
-  - name: src/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentsExtraction.kt
-    visible: true
+  - name: src/main/resources/META-INF/plugin.xml
+    visible: false

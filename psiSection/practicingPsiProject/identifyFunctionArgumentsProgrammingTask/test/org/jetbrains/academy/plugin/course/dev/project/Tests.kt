@@ -2,6 +2,7 @@ package org.jetbrains.academy.plugin.course.dev.project
 
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
+import org.jetbrains.academy.plugin.course.dev.project.extractFunctionArguments
 import org.jetbrains.kotlin.psi.KtNamedFunction
 
 class Test : BasePlatformTestCase() {

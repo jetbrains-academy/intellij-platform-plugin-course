@@ -17,7 +17,7 @@ class ReplaceFunctionArgumentTest : BasePlatformTestCase() {
         val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
         for (ktFunction in functions) {
             val arguments = extractFunctionArguments(ktFunction)
-            val dataClass = createDataClass(arguments)
+            val dataClass = createDataClass("DataClass", arguments)
             insertDataClass(dataClass, file)
             replaceFunctionArguments(ktFunction, "DataClass")
             val text = file.text

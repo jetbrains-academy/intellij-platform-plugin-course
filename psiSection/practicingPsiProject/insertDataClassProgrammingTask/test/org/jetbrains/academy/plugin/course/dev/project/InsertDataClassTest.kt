@@ -17,9 +17,9 @@ class InsertDataClassTest : BasePlatformTestCase() {
         val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
         for (ktFunction in functions) {
             val arguments = extractFunctionArguments(ktFunction)
-            val dataClass = createDataClass(arguments)
+            val dataClass = createDataClass("DataClass", arguments)
             insertDataClass(dataClass, file)
-            val text = file.text
+
             // Verify the data class was added to the file
             assertTrue(file.text.contains("data class DataClass"))
 
