@@ -12,8 +12,6 @@ import javax.swing.table.DefaultTableModel
 
 class RefactorPanelFactory : ToolWindowFactory {
     companion object {
-        private const val DEMO_COUNTER_NOTIFICATION = "RefactorPanel"
-
         private var instance: RefactorPanelFactory? = null
 
         fun getInstance(): RefactorPanelFactory? {

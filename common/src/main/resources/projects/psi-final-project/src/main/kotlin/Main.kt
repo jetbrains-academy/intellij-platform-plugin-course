@@ -11,3 +11,7 @@ fun testFunction2(param1: String, param2: Int) {
 fun test(age: Int) {
     println(age)
 }
+
+fun main() {
+    testFunction1("Hello", 42)
+}

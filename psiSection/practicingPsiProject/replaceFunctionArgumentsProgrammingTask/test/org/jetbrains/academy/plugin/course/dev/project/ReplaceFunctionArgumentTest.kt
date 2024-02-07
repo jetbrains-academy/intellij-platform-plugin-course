@@ -20,7 +20,6 @@ class ReplaceFunctionArgumentTest : BasePlatformTestCase() {
             val dataClass = createDataClass("DataClass", arguments)
             insertDataClass(dataClass, file)
             replaceFunctionArguments(ktFunction, "DataClass")
-            val text = file.text
             // Assert that the function now has a single parameter of type TestDataClass
             val realtext = ktFunction.valueParameterList?.text
             assertEquals("(data: DataClass)", realtext)

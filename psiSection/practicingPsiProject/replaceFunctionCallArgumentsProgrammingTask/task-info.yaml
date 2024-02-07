@@ -1,0 +1,21 @@
+type: edu
+custom_name: Replace Function Call Arguments With Data Class
+files:
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ReplaceFunctionCallArguments.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/FunctionBodyVariablesReplacement.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/DataClassCreator.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/DataClassInserter.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentReplacement.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentsExtraction.kt
+    visible: true
+  - name: src/main/resources/META-INF/plugin.xml
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/VariablesReplacementAction.kt
+    visible: false
+  - name: test/org/jetbrains/academy/plugin/course/dev/project/ReplaceFunctionCallArgumentsTest.kt
+    visible: false

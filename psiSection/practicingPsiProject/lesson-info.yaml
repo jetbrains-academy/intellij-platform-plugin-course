@@ -6,3 +6,4 @@ content:
   - insertDataClassProgrammingTask
   - replaceFunctionArgumentsProgrammingTask
   - replaceFunctionBodyVariablesProgrammingTask
+  - replaceFunctionCallArgumentsProgrammingTask

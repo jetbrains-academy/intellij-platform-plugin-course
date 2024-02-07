@@ -40,6 +40,8 @@ class VariablesReplacementAction : AnAction() {
 
         replaceFunctionArguments(ktFunction, dataClassName)
 
+        replaceFunctionCallArgumentsWithDataClass(project, psiFile, ktFunction, dataClassName)
+
     }
 
     override fun update(event: AnActionEvent) {

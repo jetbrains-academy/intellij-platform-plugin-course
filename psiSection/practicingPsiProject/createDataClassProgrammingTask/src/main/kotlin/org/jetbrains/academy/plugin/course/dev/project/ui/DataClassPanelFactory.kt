@@ -11,8 +11,6 @@ import javax.swing.*
 
 class DataClassPanelFactory : ToolWindowFactory {
     companion object {
-        private const val DEMO_COUNTER_NOTIFICATION = "RefactorPanel"
-
         private var instance: DataClassPanelFactory? = null
 
         fun getInstance(): DataClassPanelFactory? {

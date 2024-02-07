@@ -22,9 +22,8 @@ class ReplaceFunctionBodyVariablesTest : BasePlatformTestCase() {
             val dataClass = createDataClass("DataClass", arguments)
             insertDataClass(dataClass, file)
 
-            refactorFunctionBody(ktFunction, "DataClass")
+            refactorFunctionBody(ktFunction)
             replaceFunctionArguments(ktFunction, "DataClass")
-            val text = file.text
             assert(true)
         }
     }
