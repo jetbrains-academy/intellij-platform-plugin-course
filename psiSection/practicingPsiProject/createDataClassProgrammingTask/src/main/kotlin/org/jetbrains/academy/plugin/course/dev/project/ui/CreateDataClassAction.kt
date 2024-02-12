@@ -5,6 +5,7 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.ui.Messages
+import org.jetbrains.academy.kotlin.template.safeRunStudentCode
 import org.jetbrains.academy.plugin.course.dev.project.createDataClass
 import org.jetbrains.academy.plugin.course.dev.project.extractFunctionArguments
 
@@ -33,13 +34,13 @@ class CreateDataClassAction : AnAction() {
 
         val ktFunction = element?.parent as? KtNamedFunction ?: return
 
-        val arguments = extractFunctionArguments(ktFunction)
+        safeRunStudentCode {
+            val arguments = extractFunctionArguments(ktFunction)
 
-        val dataClass = createDataClass(dataClassName, arguments)
+            val dataClass = createDataClass(dataClassName, arguments)
 
-        val refactorPanelFactory = DataClassPanelFactory.getInstance()
-        if (refactorPanelFactory != null) {
-            refactorPanelFactory.updateTextArea(dataClass)
+            val refactorPanelFactory = DataClassPanelFactory.getInstance()
+            refactorPanelFactory?.updateTextArea(dataClass)
         }
     }
 

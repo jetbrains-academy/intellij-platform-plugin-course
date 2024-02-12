@@ -4,6 +4,7 @@ package org.jetbrains.academy.plugin.course.dev.project.ui
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
+import org.jetbrains.academy.kotlin.template.safeRunStudentCode
 import org.jetbrains.academy.plugin.course.dev.project.extractFunctionArguments
 
 import org.jetbrains.kotlin.psi.KtFile
@@ -22,28 +23,15 @@ class RefactorDataClassAction : AnAction() {
 
         val ktFunction = element?.parent as? KtNamedFunction ?: return
 
-        val arguments = extractFunctionArguments(ktFunction)
+        safeRunStudentCode {
+            val arguments = extractFunctionArguments(ktFunction)
 
-        val refactorPanelFactory = RefactorPanelFactory.getInstance()
-        if (refactorPanelFactory != null) {
-            val data = arguments.map { arrayOf(it.typeReference?.text ?: "", it.name) }
-            refactorPanelFactory.updateTable(data)
-
-        }
-
-        /* Update your tool window with the extracted information
-        val toolWindow = ToolWindowManager.getInstance(project).getToolWindow("RefactorPanel")
-        val contentManager = toolWindow?.contentManager
-        val contents = contentManager?.contents // Assuming you have a single content in the tool window
-
-        if (contents != null) {
-            for (content in contents) {
-                if (content != null && content.component is JBTextArea) {
-                    val textArea = content.component as JBTextArea
-                    textArea.text = arguments.joinToString("\n") { "${it.typeReference?.text} ${it.name}" }
-                }
+            val refactorPanelFactory = RefactorPanelFactory.getInstance()
+            if (refactorPanelFactory != null) {
+                val data = arguments.map { arrayOf(it.typeReference?.text ?: "", it.name) }
+                refactorPanelFactory.updateTable(data)
             }
-        } */
+        }
     }
 
     override fun update(event: AnActionEvent) {

@@ -9,21 +9,16 @@ class GenerateDataClassTest : BasePlatformTestCase() {
     fun testGenerateDataClassFromFunction() {
         val fileContent = """
             fun testFunction1(param1: String, param2: Int) {
-    // Function body
-        }    
+                // Function body
+            }    
         """.trimIndent()
         val file = myFixture.configureByText("MyFile.kt", fileContent)
         val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
         for (ktFunction in functions) {
             val arguments = extractFunctionArguments(ktFunction)
             val dataClass = createDataClass("DataClass", arguments)
-            val expectedDataClass = """
-                data class DataClass(
-                    val param1: String,
-                    val param2: Int
-                )
-            """.trimIndent()
-            assertEquals("Generated data class does not match the expected result.", expectedDataClass, dataClass.trim())
+            val expectedDataClass = authorCreateDataClass("DataClass", arguments)
+            assertEquals("Generated data class does not match the expected result.", expectedDataClass.trim(), dataClass.trim())
         }
     }
 }

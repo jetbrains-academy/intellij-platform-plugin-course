@@ -20,7 +20,7 @@
                 class="org.jetbrains.academy.plugin.course.dev.project.ui.RefactorDataClassAction"
                 text="Refactor Data Class"
                 description="Replace arguments with a single data class">
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="RefactoringMenu" anchor="last"/>
         </action>
     </actions>
 </idea-plugin>

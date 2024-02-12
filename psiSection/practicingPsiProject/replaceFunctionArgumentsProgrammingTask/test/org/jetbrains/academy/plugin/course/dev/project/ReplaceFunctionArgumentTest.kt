@@ -10,8 +10,8 @@ class ReplaceFunctionArgumentTest : BasePlatformTestCase() {
         // TODO: add more test cases
         val fileContent = """
             fun testFunction1(param1: String, param2: Int) {
-    // Function body
-        }    
+                // Function body
+            }    
         """.trimIndent()
         val file = myFixture.configureByText("MyFile.kt", fileContent)
         val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)

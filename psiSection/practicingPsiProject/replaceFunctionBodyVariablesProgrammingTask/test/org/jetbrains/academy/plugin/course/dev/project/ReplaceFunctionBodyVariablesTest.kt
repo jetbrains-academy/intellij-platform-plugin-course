@@ -16,15 +16,12 @@ class ReplaceFunctionBodyVariablesTest : BasePlatformTestCase() {
         }    
         """.trimIndent()
         val file = myFixture.configureByText("MyFile.kt", fileContent)
-        val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
-        for (ktFunction in functions) {
-            val arguments = extractFunctionArguments(ktFunction)
-            val dataClass = createDataClass("DataClass", arguments)
-            insertDataClass(dataClass, file)
+        val authorFile =  myFixture.configureByText("MyAuthorFile.kt", fileContent)
 
-            refactorFunctionBody(ktFunction)
-            replaceFunctionArguments(ktFunction, "DataClass")
-            assert(true)
-        }
+        val ktFunction = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java).first()
+        val authorFunction = PsiTreeUtil.findChildrenOfType(authorFile, KtNamedFunction::class.java).first()
+        refactorFunctionBody(ktFunction)
+        authorRefactorFunctionBody(authorFunction)
+        assertEquals(ktFunction.bodyExpression?.text, authorFunction.bodyExpression?.text)
     }
 }

@@ -10,8 +10,8 @@ class InsertDataClassTest : BasePlatformTestCase() {
         // TODO: add more test cases
         val fileContent = """
             fun testFunction1(param1: String, param2: Int) {
-    // Function body
-        }    
+               // Function body
+            }    
         """.trimIndent()
         val file = myFixture.configureByText("MyFile.kt", fileContent)
         val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
@@ -21,7 +21,7 @@ class InsertDataClassTest : BasePlatformTestCase() {
             insertDataClass(dataClass, file)
 
             // Verify the data class was added to the file
-            assertTrue(file.text.contains("data class DataClass"))
+            assertTrue("Data class not found or incorrect structure \n ${file.text} \n and it should be \n ${dataClass.trim()}", file.text.contains(dataClass.trim()))
 
         }
     }
