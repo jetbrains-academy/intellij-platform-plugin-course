@@ -7,7 +7,7 @@ import com.intellij.openapi.project.Project
 
 @Service(Service.Level.PROJECT)
 class RefactorPanelService : Disposable {
-    val demoWindow = RefactorPanelWindow(this)
+    val refactorPanelWindow = RefactorPanelWindow(this)
     override fun dispose() {
         logger<Project>().info("Jcef window service was disposed")
     }

@@ -49,7 +49,7 @@ class RefactorPanelFactory : ToolWindowFactory {
     fun updateTable(data: List<Array<String?>>) {
         SwingUtilities.invokeLater {
             // Clear existing data
-            tableModel.setRowCount(0)
+            tableModel.rowCount = 0
 
             // Add new rows
             data.forEach { rowData ->
