@@ -1,23 +1,23 @@
 <idea-plugin>
-    <id>jetbrains.academy.plugin.course.dev.ui.demo</id>
-    <name>IDE Development Course Demo</name>
+    <id>org.jetbrains.academy.plugin.course.dev.project.ui</id>
+    <name>PSI Final Project</name>
     <vendor>JetBrains</vendor>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <notificationGroup id="IdeDevCourseDemo" displayType="BALLOON"/>
+        <notificationGroup id="PSIFinalProject" displayType="BALLOON"/>
 
         <toolWindow doNotActivateOnStart="true"
-                    factoryClass="org.jetbrains.academy.plugin.course.dev.project.ui.DataClassPanelFactory"
+                    factoryClass="org.jetbrains.academy.plugin.course.dev.project.ui.RefactorPanelFactory"
                     id="RefactorPanel" anchor="right"/>
     </extensions>
 
     <actions>
         <!-- Add your action here -->
-        <action id="SortMethods"
-                class="org.jetbrains.academy.plugin.course.dev.project.ui.CreateDataClassAction"
+        <action id="ParametersToDataClass"
+                class="org.jetbrains.academy.plugin.course.dev.project.ui.RefactorDataClassAction"
                 text="Refactor Data Class"
                 description="Replace arguments with a single data class">
             <add-to-group group-id="RefactoringMenu" anchor="last"/>
