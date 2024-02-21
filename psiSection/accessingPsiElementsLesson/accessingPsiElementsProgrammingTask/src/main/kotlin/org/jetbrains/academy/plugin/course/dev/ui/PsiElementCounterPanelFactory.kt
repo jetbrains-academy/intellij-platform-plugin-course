@@ -15,6 +15,7 @@ import org.jetbrains.academy.kotlin.template.safeRunStudentCode
 import org.jetbrains.academy.plugin.course.dev.access.authorCountKtClasses
 import org.jetbrains.academy.plugin.course.dev.access.authorCountKtFunctions
 import org.jetbrains.academy.plugin.course.dev.access.countKtClasses
+import org.jetbrains.academy.plugin.course.dev.access.countKtFunctions
 import java.awt.BorderLayout
 import java.awt.FlowLayout
 import java.awt.event.ActionListener
@@ -82,7 +83,7 @@ class PsiElementCounterPanelFactory : ToolWindowFactory {
                 }
 
                 val functionResult = safeRunStudentCode {
-                    countKtClasses(it).toString()
+                    countKtFunctions(it).toString()
                 }
 
                 val classAuthorResult = authorCountKtClasses(it).toString()
