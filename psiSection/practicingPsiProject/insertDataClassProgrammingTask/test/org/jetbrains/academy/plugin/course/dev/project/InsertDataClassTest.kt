@@ -20,8 +20,17 @@ class InsertDataClassTest : BasePlatformTestCase() {
             val dataClass = createDataClass("DataClass", arguments)
             insertDataClass(dataClass, file)
 
+            val expected = """fun testFunction1(param1: String, param2: Int) {
+   // Function body
+}
+
+data class DataClass(
+        val param1: String,
+        val param2: Int
+)"""
+
             // Verify the data class was added to the file
-            assertTrue("Data class not found or incorrect structure \n ${file.text} \n and it should be \n ${dataClass.trim()}", file.text.contains(dataClass.trim()))
+            assertEquals("Data class not found or incorrect structure \n ${file.text} \n and it should be \n $expected", file.text, expected)
 
         }
     }
