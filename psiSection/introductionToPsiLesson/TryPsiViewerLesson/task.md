@@ -1,3 +1,5 @@
+# Task 2/2: PSI Viewer
+
 Follow a `useful tools` link in [PSI Documentation main page](https://plugins.jetbrains.com/docs/intellij/psi.html)
 and find an action which provides an ability to see and analyze PSI tree of opened file.
 

@@ -9,4 +9,3 @@ files:
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/welcome/HelloJonsi.kt
     visible: true
 custom_name: Ready to Help Jonsi?
-local_check: true

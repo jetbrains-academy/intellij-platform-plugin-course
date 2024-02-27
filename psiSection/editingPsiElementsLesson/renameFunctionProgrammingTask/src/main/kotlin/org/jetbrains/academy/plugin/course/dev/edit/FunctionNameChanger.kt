@@ -4,9 +4,7 @@ import com.intellij.openapi.command.WriteCommandAction
 import org.jetbrains.kotlin.psi.KtNamedFunction
 
 fun editFunctionName(function: KtNamedFunction, newName: String) {
-    val project = function.project
-
-    WriteCommandAction.runWriteCommandAction(project) {
+    WriteCommandAction.runWriteCommandAction(function.project) {
         function.setName(newName)
     }
 }

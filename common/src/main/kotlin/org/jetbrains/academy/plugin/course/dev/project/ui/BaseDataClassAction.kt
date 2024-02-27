@@ -9,10 +9,11 @@ import org.jetbrains.academy.kotlin.template.safeRunStudentCode
 import org.jetbrains.academy.plugin.course.dev.project.solutions.authorCreateDataClass
 import org.jetbrains.academy.plugin.course.dev.project.solutions.authorExtractFunctionArguments
 import org.jetbrains.academy.plugin.course.dev.project.solutions.authorInsertDataClass
+import org.jetbrains.academy.ui.psi.BaseUiAction
 import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.KtNamedFunction
 
-abstract class BaseDataClassAction : AnAction() {
+abstract class BaseDataClassAction : BaseUiAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project
         val editor = e.getData(CommonDataKeys.EDITOR)
@@ -39,15 +40,6 @@ abstract class BaseDataClassAction : AnAction() {
     abstract fun executeAdditionalActions(ktFunction: KtNamedFunction, dataClassName: String, psiFile: KtFile, project: Project)
 
     override fun update(event: AnActionEvent) {
-        val presentation = event.presentation
-        presentation.isEnabledAndVisible = false
-
-        val editor = event.getData(CommonDataKeys.EDITOR)
-        val psiFile = event.getData(CommonDataKeys.PSI_FILE)
-        val elementAtCaret = psiFile?.findElementAt(editor?.caretModel?.offset ?: -1)
-
-        if (elementAtCaret?.parent is KtNamedFunction) {
-            presentation.isEnabledAndVisible = true
-        }
+        updateEditor(event) { it is KtNamedFunction }
     }
 }

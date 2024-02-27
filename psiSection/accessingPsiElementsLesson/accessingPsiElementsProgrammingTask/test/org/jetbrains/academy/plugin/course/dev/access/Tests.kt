@@ -1,25 +1,34 @@
 package org.jetbrains.academy.plugin.course.dev.access
 
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
+import org.jetbrains.academy.plugin.course.dev.ui.Counter
 
-fun getResourceFileContent(path: String): String {
-    val inputStream = Test::class.java.getResourceAsStream(path)
-    return inputStream?.bufferedReader()?.use { it.readText() } ?: ""
+abstract class BaseCounterTest(private val basePath: String, val counter: Counter) : BasePlatformTestCase() {
+    private fun getResourceFileContent(relativePath: String) =
+        Test::class.java.getResourceAsStream(basePath + relativePath)?.bufferedReader()?.use { it.readText() } ?: ""
+
+    private fun getFile(fileContent: String) =
+        myFixture.configureByText("MyClass.kt", fileContent) ?: error("Internal course error!")
+
+    fun doTest(relativePath: String) {
+        val fileContent = getResourceFileContent(relativePath)
+        val file = getFile(fileContent)
+
+        val userCount = counter.counterFromStudent(file)
+        val authorCount = counter.counterFromAuthor(file)
+        assertEquals(
+            "For the Kotlin file with content $fileContent the function that calculates the number of ${counter.entityName}s should return $authorCount, but currently it returns $userCount",
+            authorCount,
+            userCount
+        )
+    }
 }
 
-class Test : BasePlatformTestCase() {
+class Test : BaseCounterTest(BASE_PATH, Counter.Class) {
 
     fun testSolution() {
         // TODO: add more test cases
-        val relativePath = "MultipleClasses.kt"
-        val fullPath = BASE_PATH + relativePath
-
-        val fileContent = getResourceFileContent(fullPath)
-        val file = myFixture.configureByText("MyClass.kt", fileContent)
-
-        val psiClassesCount = countKtClasses(file)
-        val authorClassesCount = authorCountKtClasses(file)
-        assertEquals("For the Kotlin file with content $fileContent the function countKtClasses should return 2, but currently it returns $psiClassesCount", authorClassesCount, psiClassesCount)
+        doTest("MultipleClasses.kt")
     }
 
     companion object {
@@ -27,18 +36,11 @@ class Test : BasePlatformTestCase() {
     }
 }
 
-class FunctionCounterTest : BasePlatformTestCase() {
+class FunctionCounterTest : BaseCounterTest(BASE_PATH, Counter.Function) {
 
     fun testSolution() {
         // TODO: add more test cases
-        val relativePath = "AlphabeticalSortExample.kt"
-        val fullPath = BASE_PATH + relativePath
-        val fileContent = getResourceFileContent(fullPath)
-        val file = myFixture.configureByText("MyClass.kt", fileContent)
-
-        val psiFunctionsCount = countKtFunctions(file)
-        val authorFunctionsCount = authorCountKtFunctions(file)
-        assertEquals("For the Kotlin file with content $fileContent the function countKtClasses should return 6, but currently it returns $psiFunctionsCount", authorFunctionsCount, psiFunctionsCount)
+        doTest("AlphabeticalSortExample.kt")
     }
 
     companion object {

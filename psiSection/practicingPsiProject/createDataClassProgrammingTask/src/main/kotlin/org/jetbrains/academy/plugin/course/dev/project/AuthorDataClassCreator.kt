@@ -2,22 +2,15 @@ package org.jetbrains.academy.plugin.course.dev.project
 
 import org.jetbrains.kotlin.psi.KtParameter
 
-fun authorCreateParameterListString(parameters: List<KtParameter>): String {
-    return parameters.joinToString(separator = ",\n") { param ->
-        val paramName = param.name ?: throw IllegalArgumentException("Parameter name cannot be null.")
-        val paramType = param.typeReference?.text ?: throw IllegalArgumentException("Parameter type cannot be determined for '$paramName'.")
+fun authorCreateParameterListString(parameters: List<KtParameter>) =
+    parameters.joinToString(separator = ",${System.lineSeparator()}") { param ->
+        val paramName = param.name ?: error("Parameter name cannot be null.")
+        val paramType = param.typeReference?.text ?: error("Parameter type cannot be determined for '$paramName'.")
         "    val $paramName: $paramType"
     }
-}
 
-fun authorCreateDataClass(className: String = "DataClass", parameters: List<KtParameter>): String {
-    // Generate the parameter list string
-    val parametersStr = createParameterListString(parameters)
-
-    // Construct the data class string using the parameters string
-    return """
+fun authorCreateDataClass(className: String = "DataClass", parameters: List<KtParameter>) = """
         |data class $className(
-        |$parametersStr
+        |${createParameterListString(parameters)}
         |)
     """.trimMargin()
-}

@@ -9,9 +9,8 @@ import org.junit.runners.Parameterized
 @RunWith(Parameterized::class)
 class Test(private val howManyTimes: Int) {
 
-    private fun expectedSayHelloHelena(howManyTimes: Int): String {
-        return List(howManyTimes) { "Hello, Helena!" }.joinToString(System.lineSeparator())
-    }
+    private fun expectedSayHelloHelena(howManyTimes: Int) =
+        List(howManyTimes) { HELLO_HELENA }.joinToString(System.lineSeparator())
 
     @Test
     fun test() {
@@ -19,10 +18,9 @@ class Test(private val howManyTimes: Int) {
     }
 
     companion object {
+        private const val HELLO_HELENA = "Hello, Helena!"
         @JvmStatic
         @Parameterized.Parameters
-        fun data(): List<Int> {
-            return listOf(1, 5, 10, 100)
-        }
+        fun data() = listOf(1, 5, 10, 100)
     }
 }

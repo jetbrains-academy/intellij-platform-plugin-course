@@ -5,8 +5,7 @@ import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtNamedFunction
 
 fun sortMethods(ktClass: KtClass) {
-    val project = ktClass.project
-    WriteCommandAction.runWriteCommandAction(project) {
+    WriteCommandAction.runWriteCommandAction(ktClass.project) {
         val methods = ktClass.declarations.filterIsInstance<KtNamedFunction>()
         val sortedMethods = methods.sortedBy { it.name }.map { it.copy() as KtNamedFunction }
 
