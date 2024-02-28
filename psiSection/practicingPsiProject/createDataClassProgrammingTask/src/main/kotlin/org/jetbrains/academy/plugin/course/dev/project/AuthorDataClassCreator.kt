@@ -11,6 +11,6 @@ fun authorCreateParameterListString(parameters: List<KtParameter>) =
 
 fun authorCreateDataClass(className: String = "DataClass", parameters: List<KtParameter>) = """
         |data class $className(
-        |${createParameterListString(parameters)}
+        |${authorCreateParameterListString(parameters)}
         |)
     """.trimMargin()

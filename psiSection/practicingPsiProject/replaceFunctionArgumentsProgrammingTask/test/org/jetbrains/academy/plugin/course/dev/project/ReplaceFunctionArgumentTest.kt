@@ -21,8 +21,8 @@ class ReplaceFunctionArgumentTest : BasePlatformTestCase() {
             insertDataClass(dataClass, file)
             replaceFunctionArguments(ktFunction, "DataClass")
             // Assert that the function now has a single parameter of type TestDataClass
-            val realtext = ktFunction.valueParameterList?.text
-            assertEquals("(data: DataClass)", realtext)
+            val actualParamsText = ktFunction.valueParameterList?.text
+            assertEquals("(data: DataClass)", actualParamsText)
         }
     }
 }

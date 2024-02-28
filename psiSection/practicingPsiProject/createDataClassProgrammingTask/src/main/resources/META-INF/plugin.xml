@@ -10,14 +10,14 @@
         <notificationGroup id="PSIFinalProject" displayType="BALLOON"/>
 
         <toolWindow doNotActivateOnStart="true"
-                    factoryClass="org.jetbrains.academy.plugin.course.dev.project.ui.RefactorPanelFactory"
+                    factoryClass="org.jetbrains.academy.plugin.course.dev.project.ui.DataClassPanelFactory"
                     id="RefactorPanel" anchor="right"/>
     </extensions>
 
     <actions>
         <!-- Add your action here -->
         <action id="ParametersToDataClass"
-                class="org.jetbrains.academy.plugin.course.dev.project.ui.RefactorDataClassAction"
+                class="org.jetbrains.academy.plugin.course.dev.project.ui.CreateDataClassAction"
                 text="Refactor Data Class"
                 description="Replace arguments with a single data class">
             <add-to-group group-id="RefactoringMenu" anchor="last"/>
