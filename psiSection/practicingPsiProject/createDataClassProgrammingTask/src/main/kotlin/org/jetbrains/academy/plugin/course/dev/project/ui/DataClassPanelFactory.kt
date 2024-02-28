@@ -5,8 +5,8 @@ import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.components.JBTextArea
 import com.intellij.ui.content.ContentFactory
+import com.intellij.util.ui.JBUI
 import java.awt.BorderLayout
-import java.awt.Insets
 import javax.swing.*
 
 class DataClassPanelFactory : ToolWindowFactory {
@@ -27,7 +27,7 @@ class DataClassPanelFactory : ToolWindowFactory {
             lineWrap = true
             wrapStyleWord = true
             isEditable = false
-            margin = Insets(5, 5, 5, 5) // Optionally add some margin
+            margin = JBUI.insets(5) // Optionally add some margin
         }
         panel.add(JScrollPane(textArea), BorderLayout.CENTER)
 

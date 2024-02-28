@@ -12,7 +12,6 @@ fun replaceFunctionCallArgumentsWithDataClass(
     functionName: KtNamedFunction,
     dataClassName: String
 ) {
-
     // Search for usages of the function in the provided file
     val functionCalls = PsiTreeUtil.collectElementsOfType(psiFile, KtCallExpression::class.java)
         .filter { functionName.name?.let { it1 -> it.calleeExpression?.textMatches(it1) } == true }
@@ -21,7 +20,7 @@ fun replaceFunctionCallArgumentsWithDataClass(
         val argumentList = callExpression.valueArgumentList
         val arguments = argumentList?.arguments
 
-        if (arguments != null && arguments.isNotEmpty()) {
+        if (!arguments.isNullOrEmpty()) {
             // Construct the data class creation expression with arguments
             val newDataClassCreation = createDataClassCreationExpression(arguments, dataClassName)
 

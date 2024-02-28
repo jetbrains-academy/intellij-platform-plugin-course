@@ -11,11 +11,7 @@ files:
     visible: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/DataClassPanelFactory.kt
     visible: false
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/DataClassPanelService.kt
-    visible: false
   - name: test/org/jetbrains/academy/plugin/course/dev/project/Tests.kt
     visible: false
   - name: src/main/resources/META-INF/plugin.xml
-    visible: false
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/DataClassPanelWindow.kt
     visible: false

@@ -7,9 +7,8 @@ import org.jetbrains.kotlin.psi.KtPsiFactory
 import org.jetbrains.kotlin.psi.KtReferenceExpression
 import org.jetbrains.kotlin.psi.psiUtil.collectDescendantsOfType
 
-fun createAccessExpression(ktPsiFactory: KtPsiFactory, dataClassName: String, paramName: String): KtExpression {
-    return ktPsiFactory.createExpression("$dataClassName.$paramName")
-}
+fun createAccessExpression(ktPsiFactory: KtPsiFactory, dataClassName: String, paramName: String): KtExpression =
+    ktPsiFactory.createExpression("$dataClassName.$paramName")
 
 fun refactorFunctionBody(ktNamedFunction: KtNamedFunction) {
     val project = ktNamedFunction.project
@@ -17,8 +16,8 @@ fun refactorFunctionBody(ktNamedFunction: KtNamedFunction) {
     val originalParameters = extractFunctionArguments(ktNamedFunction).mapNotNull { it.name }
 
     WriteCommandAction.runWriteCommandAction(project) {
-        val ktPsiFactory = KtPsiFactory(project)
         val functionBody = ktNamedFunction.bodyExpression ?: return@runWriteCommandAction
+        val ktPsiFactory = KtPsiFactory(project)
 
         // Iterate through each reference to the original parameters in the function body
         originalParameters.forEach { paramName ->
@@ -34,3 +33,4 @@ fun refactorFunctionBody(ktNamedFunction: KtNamedFunction) {
         }
     }
 }
+
