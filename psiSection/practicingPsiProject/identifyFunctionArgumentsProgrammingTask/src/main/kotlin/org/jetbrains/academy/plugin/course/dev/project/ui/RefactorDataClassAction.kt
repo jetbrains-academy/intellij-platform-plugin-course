@@ -14,12 +14,8 @@ class RefactorDataClassAction : BaseUiAction() {
 
         safeRunStudentCode {
             val arguments = extractFunctionArguments(ktFunction)
-
-            val refactorPanelFactory = RefactorPanelFactory.getInstance()
-            if (refactorPanelFactory != null) {
-                val data = arguments.map { arrayOf(it.typeReference?.text ?: "", it.name) }
-                refactorPanelFactory.updateTable(data)
-            }
+            val data = arguments.map { arrayOf(it.typeReference?.text ?: "", it.name) }
+            e.project?.let { updateRefactorTable(it, data) }
         }
     }
 

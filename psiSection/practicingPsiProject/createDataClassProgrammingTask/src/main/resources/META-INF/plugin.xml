@@ -9,9 +9,10 @@
     <extensions defaultExtensionNs="com.intellij">
         <notificationGroup id="PSIFinalProject" displayType="BALLOON"/>
 
-        <toolWindow doNotActivateOnStart="true"
+        <toolWindow id="DataClassPanel"
+                    doNotActivateOnStart="true"
                     factoryClass="org.jetbrains.academy.plugin.course.dev.project.ui.DataClassPanelFactory"
-                    id="RefactorPanel" anchor="right"/>
+                    anchor="right"/>
     </extensions>
 
     <actions>

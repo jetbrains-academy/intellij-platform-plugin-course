@@ -10,7 +10,9 @@ fun sortMethods(ktClass: KtClass) {
         val sortedMethods = methods.sortedBy { it.name }.map { it.copy() as KtNamedFunction }
 
         methods.zip(sortedMethods).forEach { (original, sortedCopy) ->
-            original.replace(sortedCopy)
+            if (original != sortedCopy) {
+                original.replace(sortedCopy)
+            }
         }
     }
 }
