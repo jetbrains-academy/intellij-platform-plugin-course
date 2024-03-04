@@ -12,7 +12,6 @@ fun createAccessExpression(ktPsiFactory: KtPsiFactory, dataClassName: String, pa
 
 fun refactorFunctionBody(ktNamedFunction: KtNamedFunction) {
     val project = ktNamedFunction.project
-
     val originalParameters = extractFunctionArguments(ktNamedFunction).mapNotNull { it.name }
 
     WriteCommandAction.runWriteCommandAction(project) {

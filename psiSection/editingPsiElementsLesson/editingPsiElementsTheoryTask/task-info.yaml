@@ -3,3 +3,7 @@ custom_name: How to Edit PSI Elements
 files:
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/edit/Task.kt
     visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/edit/FunctionNameChanger.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/edit/PsiElementsSorter.kt
+    visible: true

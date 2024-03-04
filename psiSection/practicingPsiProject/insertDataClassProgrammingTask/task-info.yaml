@@ -13,3 +13,5 @@ files:
     visible: false
   - name: src/main/resources/META-INF/plugin.xml
     visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/Task.kt
+    visible: false

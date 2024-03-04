@@ -3,3 +3,4 @@ custom_name: Accessing PSI Elements
 content:
   - accessingPsiElementsTheoryTask
   - accessingPsiElementsProgrammingTask
+is_template_based: false

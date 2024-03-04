@@ -4,3 +4,4 @@ content:
   - editingPsiElementsTheoryTask
   - renameFunctionProgrammingTask
   - sortMethodsProgrammingTask
+is_template_based: false
