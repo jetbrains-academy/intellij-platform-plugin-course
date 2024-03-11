@@ -12,20 +12,20 @@ import org.jetbrains.kotlin.psi.KtNamedFunction
 class CreateDataClassAction : BaseUiAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val element = getCurrentElementFromEditor(e) ?: return
-
         val dataClassName = Messages.showInputDialog(
             e.project,
             "Enter the name of the data class:",
             "Create Data Class",
             Messages.getQuestionIcon()
         )
+
         if (dataClassName.isNullOrEmpty()) return
 
         val ktFunction = element.parent as? KtNamedFunction ?: return
 
         safeRunStudentCode {
             val dataClass = createDataClass(dataClassName, extractFunctionArguments(ktFunction))
-            DataClassPanelFactory.getInstance()?.updateTextArea(dataClass)
+            e.project?.let { updateTextArea(it, dataClass) }
         }
     }
 
