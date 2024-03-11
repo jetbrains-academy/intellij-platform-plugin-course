@@ -1,0 +1,19 @@
+<idea-plugin>
+    <id>jetbrains.academy.plugin.course.dev.ui.demo</id>
+    <name>IDE Development Course Demo</name>
+    <vendor>JetBrains</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.kotlin</depends>
+
+
+    <actions>
+        <!-- Add your action here -->
+        <action id="ParametersToDataClass"
+                class="org.jetbrains.academy.plugin.course.dev.project.ui.VariablesReplacementAction"
+                text="Refactor Data Class"
+                description="Replace arguments with a single data class">
+            <add-to-group group-id="RefactoringMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

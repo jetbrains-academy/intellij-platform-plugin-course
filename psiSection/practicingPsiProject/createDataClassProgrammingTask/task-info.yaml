@@ -1,0 +1,19 @@
+type: edu
+custom_name: Create data class
+files:
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/DataClassCreator.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentsExtraction.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/AuthorDataClassCreator.kt
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/CreateDataClassAction.kt
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/DataClassPanelFactory.kt
+    visible: false
+  - name: test/org/jetbrains/academy/plugin/course/dev/project/Tests.kt
+    visible: false
+  - name: src/main/resources/META-INF/plugin.xml
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/Task.kt
+    visible: false

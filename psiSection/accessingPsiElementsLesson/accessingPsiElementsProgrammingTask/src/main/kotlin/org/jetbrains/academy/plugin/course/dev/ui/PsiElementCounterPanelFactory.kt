@@ -7,6 +7,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.psi.PsiDocumentManager
+import com.intellij.psi.PsiFile
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.table.JBTable
@@ -15,6 +16,7 @@ import org.jetbrains.academy.kotlin.template.safeRunStudentCode
 import org.jetbrains.academy.plugin.course.dev.access.authorCountKtClasses
 import org.jetbrains.academy.plugin.course.dev.access.authorCountKtFunctions
 import org.jetbrains.academy.plugin.course.dev.access.countKtClasses
+import org.jetbrains.academy.plugin.course.dev.access.countKtFunctions
 import java.awt.BorderLayout
 import java.awt.FlowLayout
 import java.awt.event.ActionListener
@@ -76,25 +78,14 @@ class PsiElementCounterPanelFactory : ToolWindowFactory {
             val psiFile = document?.let { PsiDocumentManager.getInstance(project).getPsiFile(it) }
 
             psiFile?.let {
-
-                val classResult = safeRunStudentCode {
-                    countKtClasses(it).toString()
-                }
-
-                val functionResult = safeRunStudentCode {
-                    countKtClasses(it).toString()
-                }
-
-                val classAuthorResult = authorCountKtClasses(it).toString()
-                val functionAuthorResult = authorCountKtFunctions(it).toString()
-
-                val results = mutableListOf<Array<String>>(
-                    arrayOf("Class", classResult, classAuthorResult),
-                    arrayOf("Function", functionResult, functionAuthorResult)
-                )
-
                 tableModel.rowCount = 0
-                results.forEach { tableModel.addRow(it) }
+                Counter.entries.map { counter ->
+                    with(counter) {
+                        psiFile.buildTableRow()
+                    }
+                }.forEach {
+                    tableModel.addRow(it)
+                }
             }
         }
     }

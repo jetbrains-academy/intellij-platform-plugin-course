@@ -1,0 +1,15 @@
+type: edu
+custom_name: Identify Function Arguments
+files:
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentsExtraction.kt
+    visible: true
+  - name: test/org/jetbrains/academy/plugin/course/dev/project/Tests.kt
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/RefactorDataClassAction.kt
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/RefactorPanelFactory.kt
+    visible: false
+  - name: src/main/resources/META-INF/plugin.xml
+    visible: false
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/Task.kt
+    visible: false

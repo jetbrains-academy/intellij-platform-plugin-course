@@ -49,6 +49,15 @@ configure(subprojects) {
     apply {
         plugin("java")
         plugin("kotlin")
+        plugin("org.jetbrains.intellij")
+    }
+
+    intellij {
+        version.set("2023.1.2")
+        type.set("IC")
+        plugins.set(listOf("com.intellij.java", "org.jetbrains.kotlin"))
+        downloadSources.set(true)
+        updateSinceUntilBuild.set(true)
     }
 
     // Configure detekt
@@ -115,17 +124,6 @@ configure(subprojects) {
 
 // We have to store tests inside test folder directly
 configure(subprojects.filter { it.name != "common" }) {
-    apply {
-        plugin("org.jetbrains.intellij")
-    }
-
-    intellij {
-        version.set("2023.1.2")
-        type.set("IC")
-        plugins.set(listOf("com.intellij.java", "org.jetbrains.kotlin"))
-        downloadSources.set(true)
-        updateSinceUntilBuild.set(true)
-    }
 
     val jvmVersion = gradleProperties("jvmVersion").get()
     tasks {

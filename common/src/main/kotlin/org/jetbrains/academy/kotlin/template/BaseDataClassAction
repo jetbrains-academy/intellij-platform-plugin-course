@@ -1,0 +1,11 @@
+package org.jetbrains.academy.kotlin.template
+
+
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.actionSystem.AnActionEvent
+
+class BaseDataClassAction : AnAction() {
+    override fun actionPerformed(p0: AnActionEvent) {
+        TODO("Not yet implemented")
+    }
+}

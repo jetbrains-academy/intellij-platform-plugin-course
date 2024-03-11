@@ -1,0 +1,17 @@
+type: theory
+custom_name: PSI Project - Introduction
+files:
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/Task.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ReplaceFunctionCallArguments.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/FunctionBodyVariablesReplacement.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/DataClassCreator.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/DataClassInserter.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentReplacement.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/FunctionArgumentsExtraction.kt
+    visible: true

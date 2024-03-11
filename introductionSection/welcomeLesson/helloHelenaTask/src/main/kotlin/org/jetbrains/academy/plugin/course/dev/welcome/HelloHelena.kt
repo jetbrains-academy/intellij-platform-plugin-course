@@ -1,10 +1,9 @@
 package org.jetbrains.academy.plugin.course.dev.welcome
 
-fun sayHelloHelena(howManyTimes: Int): String {
-    return List(howManyTimes) { "Hello, Helena!" }.joinToString(System.lineSeparator())
-}
+fun sayHelloHelena(howManyTimes: Int) =
+    List(howManyTimes) { "Hello, Helena!" }.joinToString(System.lineSeparator())
 
 fun main() {
-    val howManyTimes = readln().toInt()
-    print(sayHelloHelena(howManyTimes))
+    val howManyTimes = readlnOrNull()?.toIntOrNull() ?: 0
+    println(sayHelloHelena(howManyTimes))
 }

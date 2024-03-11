@@ -1,0 +1,27 @@
+<idea-plugin>
+    <id>org.jetbrains.academy.plugin.course.dev.project.ui</id>
+    <name>PSI Final Project</name>
+    <vendor>JetBrains</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.kotlin</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="PSIFinalProject" displayType="BALLOON"/>
+
+        <toolWindow id="DataClassPanel"
+                    doNotActivateOnStart="true"
+                    factoryClass="org.jetbrains.academy.plugin.course.dev.project.ui.DataClassPanelFactory"
+                    anchor="right"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your action here -->
+        <action id="ParametersToDataClass"
+                class="org.jetbrains.academy.plugin.course.dev.project.ui.CreateDataClassAction"
+                text="Refactor Data Class"
+                description="Replace arguments with a single data class">
+            <add-to-group group-id="RefactoringMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
