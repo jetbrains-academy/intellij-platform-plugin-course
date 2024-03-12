@@ -1,4 +1,7 @@
+type: framework
 custom_name: Welcome and good luck!
 content:
+  - helloHelenaTheoryTask
   - helloHelenaTask
   - helpJonsiTask
+is_template_based: false
