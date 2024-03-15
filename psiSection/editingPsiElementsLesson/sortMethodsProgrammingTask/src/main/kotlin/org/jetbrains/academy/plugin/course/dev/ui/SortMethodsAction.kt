@@ -1,6 +1,5 @@
 package org.jetbrains.academy.plugin.course.dev.ui
 
-import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.command.WriteCommandAction
 import org.jetbrains.academy.kotlin.template.safeRunStudentCode
