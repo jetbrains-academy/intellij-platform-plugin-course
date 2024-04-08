@@ -1,48 +1,17 @@
+In this task, you are tasked with implementing a function `createDataClass`, which generates a string representation of a Kotlin data class given a class name and a list of parameters (`List<KtParameter>`).
 
-This is a task description file.
-Its content will be displayed to a learner
-in the **Task Description** window.
+This string will later be used to insert the data class definition into your Kotlin file programmatically.
 
-It supports both Markdown and HTML.
-To toggle the format, you can rename **task.md**
-to **task.html**, or vice versa.
-The default task description format can be changed
-in **Preferences | Tools | Education**,
-but this will not affect any existing task description files.
+**Your Objective**:
 
-The following features are available in
-**task.md/task.html** which are specific to the JetBrains Academy plugin:
+Complete the implementation of the `createDataClass` function that constructs and returns a Kotlin data class definition as a string.
 
-- Hints can be added anywhere in the task text.
-  Type "hint" and press Tab.
-  Hints should be added to an empty line in the task text.
-  In hints you can use both HTML and Markdown.
-<div class="hint">
+This involves two main steps:
 
-Text of your hint
+* Generate the *Parameter List String*: Use the provided `createParameterListString` function to transform the list of KtParameter objects into a formatted string where each parameter is declared within the data class.
 
-</div>
+  Each parameter declaration should follow the format: `val paramName: paramType`, and parameters should be separated by commas and line breaks for readability.
 
-- You may need to refer your learners to a particular lesson,
-task, or file. To achieve this, you can use the in-course links.
-Specify the path using the `[link_text](course://lesson1/task1/file1)` format.
+* Construct the *Data Class String*: With the parameter list string prepared, construct the final data class definition string.
 
-- You can insert shortcuts in the task description.
-While **task.html/task.md** is open, right-click anywhere
-on the **Editor** tab and choose the **Insert shortcut** option
-from the context menu.
-For example: &shortcut:FileStructurePopup;.
-
-- Insert the &percnt;`IDE_NAME`&percnt; macro,
-which will be replaced by the actual IDE name.
-For example, **%IDE_NAME%**.
-
-- Insert PSI elements, by using links like
-`[element_description](psi_element://link.to.element)`.
-To get such a link, right-click the class or method
-and select **Copy Reference**.
-Then press &shortcut:EditorPaste; to insert the link where appropriate.
-For example, a [link to the "contains" method](psi_element://java.lang.String#contains).
-
-- You can add link to file using **full path** like this:
-  `[file_link](file://lesson1/task1/file.txt)`.
+  The data class should be named according to the className parameter (defaulting to "DataClass" if no name is provided) and include the formatted parameters within its declaration.
