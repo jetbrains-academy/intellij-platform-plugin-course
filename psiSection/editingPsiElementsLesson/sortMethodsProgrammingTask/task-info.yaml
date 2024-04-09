@@ -1,7 +1,7 @@
 type: edu
 custom_name: Reordering Methods
 files:
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/edit/PsiElementsSorter.kt
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/edit/SortMethods.kt
     visible: true
   - name: src/main/resources/META-INF/plugin.xml
     visible: false

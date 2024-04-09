@@ -1,0 +1,5 @@
+type: theory
+custom_name: Welcome Helena
+files:
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/welcome/HelloHelena.kt
+    visible: true

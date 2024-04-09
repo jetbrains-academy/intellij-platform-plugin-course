@@ -8,7 +8,7 @@ import org.jetbrains.kotlin.psi.KtNamedFunction
 class Test : BasePlatformTestCase() {
 
     fun testSolution() {
-        // TODO: add more test cases
+        // TODO: add parametrized tests
         val fileContent = """
             class Person {
                 fun name() {
@@ -26,14 +26,14 @@ class Test : BasePlatformTestCase() {
             
         """.trimIndent()
         val file = myFixture.configureByText("Person.kt", fileContent)
-        val classes = PsiTreeUtil.findChildrenOfType(file, KtClass::class.java)
-        for (ktClass in classes) {
+        val ktClasses = PsiTreeUtil.findChildrenOfType(file, KtClass::class.java)
+        for (ktClass in ktClasses) {
             sortMethods(ktClass)
             val methods = ktClass.declarations.filterIsInstance<KtNamedFunction>()
-            val sorted = methods.sortedBy { it.name }
+            val sortedMethods = methods.sortedBy { it.name }
             assertEquals(
-                "For the Kotlin file with content $fileContent the function sortMethods should sort methods alphabetically, for class ${ktClass.name} expected output is ${sorted}, but actual is $methods",
-                sorted,
+                "For the Kotlin file with content $fileContent the function sortMethods should sort methods alphabetically, for class ${ktClass.name} expected output is ${sortedMethods}, but actual is $methods",
+                sortedMethods,
                 methods
             )
         }

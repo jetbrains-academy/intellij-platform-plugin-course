@@ -1,0 +1,7 @@
+type: theory
+custom_name: How to Build PSI Elements
+files:
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/add/Task.kt
+    visible: true
+  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/add/AddDeprecatedAnnotation.kt
+    visible: true
