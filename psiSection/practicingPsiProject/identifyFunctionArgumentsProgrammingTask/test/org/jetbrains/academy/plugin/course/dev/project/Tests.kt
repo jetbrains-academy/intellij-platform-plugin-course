@@ -1,20 +1,17 @@
 package org.jetbrains.academy.plugin.course.dev.project
 
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
+import org.jetbrains.academy.test.MyBaseTest
 import org.jetbrains.kotlin.psi.KtNamedFunction
 
-class Test : BasePlatformTestCase() {
 
-    fun testSolution() {
-        // TODO: add more test cases
-        val fileContent = """
-            fun testFunction1(param1: String, param2: Int) {
-                // Function body
-            }    
-        """.trimIndent()
-        val file = myFixture.configureByText("MyFile.kt", fileContent)
+abstract class BaseIdentifyArgumentsTest : MyBaseTest() {
+
+    fun doTest(relativePath: String) {
+        val fileContent = getResourceFileContent(relativePath)
+        val file = getFile(fileContent)
         val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
+
         for (ktFunction in functions) {
             val arguments = extractFunctionArguments(ktFunction)
             assertEquals(
@@ -23,5 +20,15 @@ class Test : BasePlatformTestCase() {
                 arguments
             )
         }
+
+    }
+}
+
+class IdentifyArgumentsTest : BaseIdentifyArgumentsTest() {
+    override val resourceClass: Class<*>
+        get() = IdentifyArgumentsTest::class.java
+
+    fun testSolution() {
+        doTest("Main.kt")
     }
 }

@@ -1,50 +1,47 @@
 package org.jetbrains.academy.plugin.course.dev.project
 
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
+import org.jetbrains.academy.test.MyBaseTest
 import org.jetbrains.kotlin.psi.*
 
-class ReplaceFunctionCallArgumentsTest : BasePlatformTestCase() {
+private fun normalizeWhitespace(text: String): String {
+    return text.replace("\\s+".toRegex(), " ").trim()
+}
 
-    fun testReplaceFunctionCallArgumentsWithDataClass() {
-        // Setup the Kotlin file content with a function and its calls
-        val fileContent = """
-            fun testFunction1(data: DataClass) {
-                println(data.param1)
-                println(data.param2)
+abstract class BaseReplaceFunctionCallsTest : MyBaseTest() {
+
+    fun doTest(relativePath: String) {
+        val fileContent = getResourceFileContent(relativePath)
+        val file = getFile(fileContent)
+        val authorFile = myFixture.configureByText("Author.kt", fileContent) ?: error("Internal course error!")
+
+        val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
+        val authorFunctions = PsiTreeUtil.findChildrenOfType(authorFile, KtNamedFunction::class.java)
+
+        functions.zip(authorFunctions).forEachIndexed { index, (function, authorFunction) ->
+            replaceFunctionCallArgumentsWithDataClass(project, file as KtFile, function, "DataClass$index")
+            authorReplaceFunctionCallArgumentsWithDataClass(project, authorFile as KtFile, authorFunction, "DataClass$index")
+
+            val functionCalls = PsiTreeUtil.collectElementsOfType(file, KtCallExpression::class.java)
+                .filter { function.name?.let { it1 -> it.calleeExpression?.textMatches(it1) } == true }
+            val authorFunctionCalls = PsiTreeUtil.collectElementsOfType(authorFile, KtCallExpression::class.java)
+                .filter { authorFunction.name?.let { it1 -> it.calleeExpression?.textMatches(it1) } == true }
+
+
+            functionCalls.zip(authorFunctionCalls).forEach { (functionCall, authorFunctionCall) ->
+                val argumentList = functionCall.valueArgumentList
+                val authorArgumentList = authorFunctionCall.valueArgumentList
+                assertEquals("Argument lists do not match", normalizeWhitespace(authorArgumentList?.text ?: ""), normalizeWhitespace(argumentList?.text ?: ""))
             }
-
-            fun main() {
-                testFunction1("Hello", 42)
-            }
-            
-            data class DataClass(val param1: String, val param2: Int)
-        """.trimIndent()
-
-
-        val file = myFixture.configureByText("MyFile.kt", fileContent) as KtFile
-        val functionName = PsiTreeUtil.findChildOfType(file, KtNamedFunction::class.java)
-
-
-        if (functionName != null) {
-            replaceFunctionCallArgumentsWithDataClass(project, file, functionName, "DataClass")
         }
+    }
+}
 
-        // Check the refactored file content
-        val expectedFileContent = """
-            fun testFunction1(data: DataClass) {
-                println(data.param1)
-                println(data.param2)
-            }
+class ReplaceFunctionCallsTest : BaseReplaceFunctionCallsTest() {
+    override val resourceClass: Class<*>
+        get() = ReplaceFunctionCallsTest::class.java
 
-            fun main() {
-                testFunction1(DataClass("Hello", 42))
-            }
-            
-            data class DataClass(val param1: String, val param2: Int)
-        """.trimIndent()
-
-        // Assert the file content has been refactored as expected
-        assertEquals("File content does not match expected refactoring", expectedFileContent, file.text)
+    fun testSolution() {
+        doTest("Main.kt")
     }
 }

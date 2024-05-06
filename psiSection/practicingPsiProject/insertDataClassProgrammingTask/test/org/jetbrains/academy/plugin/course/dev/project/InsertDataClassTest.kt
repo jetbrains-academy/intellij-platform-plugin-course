@@ -1,43 +1,41 @@
 package org.jetbrains.academy.plugin.course.dev.project
 
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
+import org.jetbrains.academy.test.MyBaseTest
+import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtNamedFunction
 
-class InsertDataClassTest : BasePlatformTestCase() {
 
-    fun testSolution() {
-        // TODO: add more test cases
-        val fileContent = """
-            fun testFunction1(param1: String, param2: Int) {
-               // Function body
-            }
-        """.trimIndent()
-        val file = myFixture.configureByText("MyFile.kt", fileContent)
+abstract class BaseInsertDataClassTest : MyBaseTest() {
+
+    fun doTest(relativePath: String) {
+        val fileContent = getResourceFileContent(relativePath)
+        val file = getFile(fileContent)
         val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
 
-        for (ktFunction in functions) {
+        functions.forEachIndexed { index, ktFunction ->
             val arguments = extractFunctionArguments(ktFunction)
-            val dataClass = createDataClass("DataClass", arguments)
+            val dataClass = createDataClass("DataClass${index}", arguments)
             insertDataClass(dataClass, file)
 
-            val expected = """
-                fun testFunction1(param1: String, param2: Int) {
-                   // Function body
-                }
-                
-                data class DataClass(
-                        val param1: String,
-                        val param2: Int
-                )
-            """.trimIndent()
+            val classes = PsiTreeUtil.findChildrenOfType(file, KtClass::class.java)
+            val insertedDataClass = classes.find { it.name == "DataClass${index}" }
 
-            // Verify the data class was added to the file
-            assertEquals(
-                "Data class not found or incorrect structure \n${file.text}\nand it should be\n$expected",
-                file.text,
-                expected
-            )
+            if (insertedDataClass == null) fail(("Data class was not found in the file."))
+
+            insertedDataClass?.primaryConstructor?.valueParameters?.forEachIndexed { i, valueParameter ->
+                assertEquals("Parameter name does not match the expected result.", arguments[i].name, valueParameter.name)
+                assertEquals("Parameter type does not match the expected result.", arguments[i].typeReference?.text, valueParameter.typeReference?.text)
+            }
         }
+    }
+}
+
+class InsertDataClassTest : BaseInsertDataClassTest() {
+    override val resourceClass: Class<*>
+        get() = InsertDataClassTest::class.java
+
+    fun testSolution() {
+        doTest("Main.kt")
     }
 }
