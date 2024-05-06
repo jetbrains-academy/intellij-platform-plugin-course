@@ -7,3 +7,12 @@ Implement `sortMethods` function which takes PSI class and orders all inner meth
 
 Get list of class methods, **copy** them and sort list of copies by name. Then use **replace** original methods one by one with copy which should stand in this position in sorted order.
 </div>
+
+**Run Plugin**
+
+To see your implemented methods in action within a UI, run the following command in your project's root directory:
+
+* ` ./gradlew :psiSection-editingPsiElementsLesson-task:runIde
+  ` on Linux or MacOS
+* ` gradlew :psiSection-editingPsiElementsLesson-task:runIde
+  ` on Windows

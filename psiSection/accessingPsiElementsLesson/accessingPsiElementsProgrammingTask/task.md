@@ -6,3 +6,15 @@ count number of kotlin classes of functions relatively declared in the given kot
 Try to use `KtClass::class.java` for classes and `KtNamedFunction::class.java` for functions value for aClass parameter for `findChildrenOfType`
 </div>
 
+**Run Plugin**
+
+To see your implemented methods in action within a UI, run the following command in your project's root directory:
+
+* ` ./gradlew :psiSection-accessingPsiElementsLesson-task:runIde
+  ` on Linux or MacOS
+* ` gradlew :psiSection-accessingPsiElementsLesson-task:runIde
+  ` on Windows
+
+
+
+
