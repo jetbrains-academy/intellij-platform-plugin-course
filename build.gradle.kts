@@ -150,4 +150,16 @@ configure(subprojects.filter { it.name != "common" }) {
     dependencies {
         implementation(project(":common"))
     }
+
+    tasks.register<Copy>("restoreOriginalFiles") {
+        from("${rootDir}/common/src/main/resources/backUpProjects")
+        into("${rootDir}/common/src/main/resources/projects")
+    }
+
+    tasks {
+        runIde {
+            dependsOn("restoreOriginalFiles")
+        }
+    }
+
 }

@@ -7,3 +7,12 @@ by replacing all its existing parameters with a single parameter named **data** 
 
 Learn how `KtPsiFactory.createParameter` can be used to create a function parameter with a specific type and name.
 </div>
+
+**Run Plugin**
+
+To see your implemented methods in action within a UI, run the following command in your project's root directory:
+
+* ` ./gradlew :psiSection-practicingPsiProject-task:runIde
+  ` on Linux or MacOS
+* ` gradlew :psiSection-practicingPsiProject-task:runIde
+  ` on Windows

@@ -15,3 +15,12 @@ This involves two main steps:
 * Construct the *Data Class String*: With the parameter list string prepared, construct the final data class definition string.
 
   The data class should be named according to the className parameter (defaulting to "DataClass" if no name is provided) and include the formatted parameters within its declaration.
+
+**Run Plugin**
+
+To see your implemented methods in action within a UI, run the following command in your project's root directory:
+
+* ` ./gradlew :psiSection-practicingPsiProject-task:runIde
+  ` on Linux or MacOS
+* ` gradlew :psiSection-practicingPsiProject-task:runIde
+  ` on Windows
