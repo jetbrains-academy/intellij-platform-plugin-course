@@ -3,9 +3,9 @@ package org.jetbrains.academy.plugin.course.dev.access
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import org.jetbrains.academy.plugin.course.dev.ui.Counter
 
-abstract class BaseCounterTest(private val basePath: String, val counter: Counter) : BasePlatformTestCase() {
+abstract class BaseCounterTest(private val counter: Counter) : BasePlatformTestCase() {
     private fun getResourceFileContent(relativePath: String) =
-        Test::class.java.getResourceAsStream(basePath + relativePath)?.bufferedReader()?.use { it.readText() } ?: ""
+        Test::class.java.getResourceAsStream(BASE_PATH + relativePath)?.bufferedReader()?.use { it.readText() } ?: ""
 
     private fun getFile(fileContent: String) =
         myFixture.configureByText("MyClass.kt", fileContent) ?: error("Internal course error!")
@@ -22,28 +22,30 @@ abstract class BaseCounterTest(private val basePath: String, val counter: Counte
             userCount
         )
     }
+
+    companion object {
+        private const val BASE_PATH = "/backUpProjects/psi-elements-count-project/src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/examples/"
+    }
 }
 
-class Test : BaseCounterTest(BASE_PATH, Counter.Class) {
+class Test : BaseCounterTest(Counter.Class) {
 
     fun testSolution() {
         // TODO: add more test cases
         doTest("MultipleClasses.kt")
-    }
-
-    companion object {
-        private const val BASE_PATH = "/psiElementsCountProject/src/main/kotlin/AccessingPsiElements/ElementsCounter/"
+        doTest("MultipleMethods.kt")
+        doTest("NestedSortExample.kt")
+        doTest("NestedClasses.kt")
     }
 }
 
-class FunctionCounterTest : BaseCounterTest(BASE_PATH, Counter.Function) {
+class FunctionCounterTest : BaseCounterTest(Counter.Function) {
 
     fun testSolution() {
         // TODO: add more test cases
-        doTest("AlphabeticalSortExample.kt")
-    }
-
-    companion object {
-        private const val BASE_PATH = "/SortMethodsProject/src/main/kotlin/EditingPsiElements/"
+        doTest("MultipleClasses.kt")
+        doTest("MultipleMethods.kt")
+        doTest("NestedSortExample.kt")
+        doTest("NestedClasses.kt")
     }
 }
