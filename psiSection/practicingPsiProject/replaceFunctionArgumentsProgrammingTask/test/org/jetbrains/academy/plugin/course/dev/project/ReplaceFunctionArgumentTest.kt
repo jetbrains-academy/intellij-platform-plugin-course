@@ -1,28 +1,34 @@
 package org.jetbrains.academy.plugin.course.dev.project
 
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
+import org.jetbrains.academy.test.MyBaseTest
 import org.jetbrains.kotlin.psi.KtNamedFunction
 
-class ReplaceFunctionArgumentTest : BasePlatformTestCase() {
+abstract class BaseReplaceFunctionArgumentsTest : MyBaseTest() {
 
-    fun testSolution() {
-        // TODO: add more test cases
-        val fileContent = """
-            fun testFunction1(param1: String, param2: Int) {
-                // Function body
-            }    
-        """.trimIndent()
-        val file = myFixture.configureByText("MyFile.kt", fileContent)
+    fun doTest(relativePath: String) {
+        val fileContent = getResourceFileContent(relativePath)
+        val file = getFile(fileContent)
         val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
-        for (ktFunction in functions) {
+
+        functions.forEachIndexed {index, ktFunction ->
             val arguments = extractFunctionArguments(ktFunction)
-            val dataClass = createDataClass("DataClass", arguments)
+            val name = "DataClass${index}"
+            val dataClass = createDataClass(name, arguments)
             insertDataClass(dataClass, file)
-            replaceFunctionArguments(ktFunction, "DataClass")
+            replaceFunctionArguments(ktFunction, name)
             // Assert that the function now has a single parameter of type TestDataClass
             val actualParamsText = ktFunction.valueParameterList?.text
-            assertEquals("(data: DataClass)", actualParamsText)
+            assertEquals("(data: ${name})", actualParamsText)
         }
+    }
+}
+
+class ReplaceFunctionArgumentsTest : BaseReplaceFunctionArgumentsTest() {
+    override val resourceClass: Class<*>
+        get() = ReplaceFunctionArgumentsTest::class.java
+
+    fun testSolution() {
+        doTest("Main.kt")
     }
 }

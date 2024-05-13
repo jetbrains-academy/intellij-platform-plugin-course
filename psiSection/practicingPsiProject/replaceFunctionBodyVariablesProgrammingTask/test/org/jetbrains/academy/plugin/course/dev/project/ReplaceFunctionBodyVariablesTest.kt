@@ -1,27 +1,39 @@
 package org.jetbrains.academy.plugin.course.dev.project
 
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.testFramework.fixtures.BasePlatformTestCase
+import org.jetbrains.academy.test.MyBaseTest
 import org.jetbrains.kotlin.psi.KtNamedFunction
 
+private fun normalizeWhitespace(text: String): String {
+    return text.replace("\\s+".toRegex(), " ").trim()
+}
+abstract class BaseReplaceFunctionBodyVariablesTest : MyBaseTest() {
 
-class ReplaceFunctionBodyVariablesTest : BasePlatformTestCase() {
+    fun doTest(relativePath: String) {
+        val fileContent = getResourceFileContent(relativePath)
+        val file = getFile(fileContent)
+        val authorFile = myFixture.configureByText("Author.kt", fileContent) ?: error("Internal course error!")
+
+        val functions = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java)
+        val authorFunctions = PsiTreeUtil.findChildrenOfType(authorFile, KtNamedFunction::class.java)
+
+        functions.zip(authorFunctions).forEach { (ktFunction, authorFunction) ->
+            refactorFunctionBody(ktFunction)
+            authorRefactorFunctionBody(authorFunction)
+
+            val normalizedOriginalFunctionBody = normalizeWhitespace(ktFunction.bodyExpression?.text ?: "")
+            val normalizedAuthorFunctionBody = normalizeWhitespace(authorFunction.bodyExpression?.text ?: "")
+
+            assertEquals(normalizedOriginalFunctionBody, normalizedAuthorFunctionBody)
+        }
+    }
+}
+
+class ReplaceFunctionBodyVariablesTest : BaseReplaceFunctionBodyVariablesTest() {
+    override val resourceClass: Class<*>
+        get() = ReplaceFunctionBodyVariablesTest::class.java
 
     fun testSolution() {
-        // TODO: add more test cases
-        val fileContent = """
-            fun testFunction1(param1: String, param2: Int) {
-                println(param1)
-                println(param2)
-        }    
-        """.trimIndent()
-        val file = myFixture.configureByText("MyFile.kt", fileContent)
-        val authorFile =  myFixture.configureByText("MyAuthorFile.kt", fileContent)
-
-        val ktFunction = PsiTreeUtil.findChildrenOfType(file, KtNamedFunction::class.java).first()
-        val authorFunction = PsiTreeUtil.findChildrenOfType(authorFile, KtNamedFunction::class.java).first()
-        refactorFunctionBody(ktFunction)
-        authorRefactorFunctionBody(authorFunction)
-        assertEquals(ktFunction.bodyExpression?.text, authorFunction.bodyExpression?.text)
+        doTest("Main.kt")
     }
 }
