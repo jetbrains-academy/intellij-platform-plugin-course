@@ -1,4 +1,4 @@
-package org.jetbrains.academy.plugin.course.dev.edit
+package org.jetbrains.academy.plugin.course.dev.add
 
 fun main() {
     TODO()
