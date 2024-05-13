@@ -1,6 +1,6 @@
 type: framework
 custom_name: Building PSI Elements
 content:
-  - buildingPsiElementsTheoryTask
-  - buildingAnnotationsProgrammingTask
+  - addPsiElementsTheoryTask
+  - addAnnotationsProgrammingTask
 is_template_based: false

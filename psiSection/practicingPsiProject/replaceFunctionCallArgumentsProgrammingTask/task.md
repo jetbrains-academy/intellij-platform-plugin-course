@@ -13,3 +13,12 @@ Implement the `replaceFunctionCallArgumentsWithDataClass` function. This functio
 Leverage `PsiTreeUtil.collectElementsOfType` to traverse the PSI and identify function call expressions. 
 These calls should match with the specified function.
 </div>
+
+**Run Plugin**
+
+To see your implemented methods in action within a UI, run the following command in your project's root directory:
+
+* ` ./gradlew :psiSection-practicingPsiProject-task:runIde
+  ` on Linux or MacOS
+* ` gradlew :psiSection-practicingPsiProject-task:runIde
+  ` on Windows
