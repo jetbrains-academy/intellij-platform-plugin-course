@@ -25,5 +25,5 @@ Use `KtPsiFactory` to create a new annotation entry. Learn how to instantiate `K
 <div class="hint" title="Checking for existing annotations">
 
 Implement a helper method to check if a `KtFunction` already has a `@Deprecated` annotation. 
-The `annotationEntries` property of 'KtFunction' might be useful for this.
+The `annotationEntries` property of `KtFunction` might be useful for this.
 </div>
