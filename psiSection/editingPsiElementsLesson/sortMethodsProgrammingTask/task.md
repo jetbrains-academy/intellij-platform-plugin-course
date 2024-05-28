@@ -1,11 +1,11 @@
-Sometimes, you want to make you code more searchable and sort methods by the alphabetical order.
-Now you can do it automatically, just several lines of code!
-Implement `sortMethods` function which takes PSI class and orders all inner methods in alphabetical order.
+Sometimes, you want to make your code more searchable by sorting methods in alphabetical order.
+Now, you can do it automatically with just a few lines of code!
+Implement the `sortMethods` function, which takes a PSI class and orders all inner methods alphabetically.
 
 
 <div class="hint" title="Where to start?">
 
-Get list of class methods, **copy** them and sort list of copies by name. Then use **replace** original methods one by one with copy which should stand in this position in sorted order.
+Get the list of class methods, **copy** them, and sort the list of copies by name. Then, **replace** the original methods one by one with the copy that should stand in the sorted order.
 </div>
 
 **Run Plugin**
@@ -13,6 +13,6 @@ Get list of class methods, **copy** them and sort list of copies by name. Then u
 To see your implemented methods in action within a UI, run the following command in your project's root directory:
 
 * ` ./gradlew :psiSection-editingPsiElementsLesson-task:runIde
-  ` on Linux or MacOS
+  ` on Linux or MacOS.
 * ` gradlew :psiSection-editingPsiElementsLesson-task:runIde
-  ` on Windows
+  ` on Windows.
