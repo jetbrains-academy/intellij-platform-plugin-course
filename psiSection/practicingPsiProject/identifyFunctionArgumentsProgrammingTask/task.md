@@ -11,6 +11,6 @@ This will involve analyzing the `ktNamedFunction` object to extract its paramete
 To see your implemented methods in action within a UI, run the following command in your project's root directory:
 
 * ` ./gradlew :psiSection-practicingPsiProject-task:runIde
-  ` on Linux or MacOS
+  ` on Linux or MacOS.
 * ` gradlew :psiSection-practicingPsiProject-task:runIde
-  ` on Windows
+  ` on Windows.

@@ -4,14 +4,14 @@ You have successfully refactored a function to use a data class for its paramete
 
 This task involves updating each call to the refactored function, replacing its original list of arguments with a single argument: an instance of the data class.
 
-**Your objective:**
+**Your Objective:**
 
 Implement the `replaceFunctionCallArgumentsWithDataClass` function. This function scans a Kotlin file for calls to the refactored function and replaces the existing arguments in each call with a new instance of the data class, properly populated with the original arguments.
 
 <div class="hint" title="Finding Function Calls">
 
-Leverage `PsiTreeUtil.collectElementsOfType` to traverse the PSI and identify function call expressions. 
-These calls should match with the specified function.
+Leverage `PsiTreeUtil.collectElementsOfType` to traverse the PSI and identify function call expressions 
+that match the specified function.
 </div>
 
 **Run Plugin**
@@ -19,6 +19,6 @@ These calls should match with the specified function.
 To see your implemented methods in action within a UI, run the following command in your project's root directory:
 
 * ` ./gradlew :psiSection-practicingPsiProject-task:runIde
-  ` on Linux or MacOS
+  ` on Linux or MacOS.
 * ` gradlew :psiSection-practicingPsiProject-task:runIde
-  ` on Windows
+  ` on Windows.
