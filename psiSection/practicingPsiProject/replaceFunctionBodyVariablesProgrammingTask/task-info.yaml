@@ -17,7 +17,7 @@ files:
     visible: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/VariablesReplacementAction.kt
     visible: false
-  - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/AuthorFunctionBodyVariablesReplacement.kt
-    visible: true
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/Task.kt
+    visible: false
+  - name: test/org/jetbrains/academy/plugin/course/dev/project/AuthorFunctionBodyVariablesReplacement.kt
     visible: false
