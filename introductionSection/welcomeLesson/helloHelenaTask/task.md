@@ -1,6 +1,6 @@
-Say hello to Helena! Add implementation to method `helloHelena` method which should return “Hello, Helena!” given number of times, separated by new line.
+Say hello to Helena! Add an implementation to the `helloHelena` method, which should return “Hello, Helena!” a given number of times. Each greeting should be separated by a newline.
 
-<div class="hint" title="How to get platform-specific new line symbol?">
+<div class="hint" title="How to get a platform-specific newline symbol?">
 
-Use `System.lineSeparator()` to get platform-specific new line symbol
+Use `System.lineSeparator()` to get a platform-specific newline symbol.
 </div>

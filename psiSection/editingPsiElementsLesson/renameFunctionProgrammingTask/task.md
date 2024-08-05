@@ -1,27 +1,27 @@
-Sometimes, switching between Python and Kotlin leeds to following code style mistake:
+Sometimes, switching between Python and Kotlin leads to the following code style mistake:
 
-Python developers usually use `snake_case` for methods naming like
+Python developers usually use `snake_case` for method naming, like:
 ```python
 def sort_values(values):
 ```
-While in Kotlin or Java `camelCase` is commonly used
+In contrast, Kotlin and Java commonly use `camelCase`:
 ```Kotlin
 fun sortValues(values: List<Int>) {...}
 ```
 
-**Your task will be** to help such multi-language programmers and
-implement method which renames `snake_case` named method to `camelCase`.
+**Your task will be** to assist multi-language programmers by
+implementing a method that renames `snake_case` methods to `camelCase`.
 
-So before your method invocation method looked like:
+Before your method invocation, the method might look like:
 ```Kotlin
 fun sort_values(values: List<Int>) {...}
 ```
-but after
+After:
 ```Kotlin
 fun sortValues(values: List<Int>) {...}
 ```
 
-<div class="hint" title="How to get project for WriteActionCommand?">
+<div class="hint" title="How to get the project for WriteActionCommand?">
 
-Every PSI element has link to project, just try `psiElement.project`
+Every PSI element has a link to the project; just try `psiElement.project`.
 </div>
