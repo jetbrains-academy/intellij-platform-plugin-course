@@ -7,4 +7,4 @@ content:
   - introductionSection
   - psiSection
 environment_settings:
-  jvm_language_level: JDK_20
+  jvm_language_level: JDK_17
