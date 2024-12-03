@@ -1,3 +1,4 @@
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 import org.jetbrains.intellij.platform.gradle.extensions.IntelliJPlatformDependenciesExtension
 import org.jetbrains.intellij.platform.gradle.extensions.IntelliJPlatformExtension
 import org.jetbrains.intellij.platform.gradle.extensions.IntelliJPlatformRepositoriesExtension
@@ -12,6 +13,7 @@ val ideaVersion: String by project
 
 plugins {
     java
+    `java-test-fixtures`
     val kotlinVersion = "1.9.21"
     id("org.jetbrains.kotlin.jvm") version kotlinVersion apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.1"
@@ -46,6 +48,7 @@ configure(subprojects) {
     apply {
         plugin("java")
         plugin("kotlin")
+        plugin("java-test-fixtures")
     }
 
     // Configure detekt
@@ -157,9 +160,11 @@ configure(subprojects.filter { it.name != "common" }) {
             intellijIdeaCommunity(ideaVersion, useInstaller = false)
             jetbrainsRuntime()
             bundledPlugins("com.intellij.java", "org.jetbrains.kotlin")
+            testFramework(TestFrameworkType.Bundled)
         }
 
         implementation(project(":common"))
+        testImplementation(testFixtures(project(":common")))
     }
 
     tasks.register<Copy>("restoreOriginalFiles") {

@@ -1,3 +1,5 @@
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+
 group = rootProject.group
 version = rootProject.version
 
@@ -23,5 +25,8 @@ dependencies {
         intellijIdeaCommunity(ideaVersion, useInstaller = false)
         jetbrainsRuntime()
         bundledPlugins("com.intellij.java", "org.jetbrains.kotlin")
+        testFramework(TestFrameworkType.Bundled)
     }
+
+    testFixturesApi("junit:junit:4.13.2")
 }
