@@ -1,7 +1,16 @@
 type: marketplace
-title: JetBrains Academy Kotlin course template
+title: IDE Plugin Development Course
 language: English
-summary: TODO
+summary: This course is designed for novices in plugin development for JetBrains IDEs.
+  It covers the basics of plugin development and provides hands-on experience in working
+  with PSI (Program Structure Interface) elements. The main goal of the course is
+  not to rewrite the existing documentation but rather to cover popular topics and
+  provide links to the official documentation so that students can get used to reading
+  the documentation and searching for necessary information.
+vendor:
+  name: JetBrains
+  email: support@jetbrains.com
+  url: https://www.jetbrains.com/
 programming_language: Kotlin
 content:
   - introductionSection
