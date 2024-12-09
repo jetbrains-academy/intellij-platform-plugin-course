@@ -1,5 +1,4 @@
 type: choice
-custom_name: Try PS Viewer
 is_multiple_choice: true
 options:
   - text: org.jetbrains.kotlin.psi.KtClass
@@ -13,4 +12,5 @@ options:
 files:
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/intro/Person.kt
     visible: true
-local_check: true
+custom_name: Try PS Viewer
+

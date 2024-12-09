@@ -7,13 +7,19 @@ files:
     visible: true
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/AuthorDataClassCreator.kt
     visible: false
+    propagatable: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/CreateDataClassAction.kt
     visible: false
+    propagatable: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/DataClassPanelFactory.kt
     visible: false
+    propagatable: false
   - name: test/org/jetbrains/academy/plugin/course/dev/project/Tests.kt
     visible: false
+    propagatable: false
   - name: src/main/resources/META-INF/plugin.xml
     visible: false
+    propagatable: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/Task.kt
     visible: false
+    propagatable: false
