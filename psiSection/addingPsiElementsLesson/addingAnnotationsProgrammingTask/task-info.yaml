@@ -5,5 +5,7 @@ files:
     visible: true
   - name: test/org/jetbrains/academy/plugin/course/dev/add/Tests.kt
     visible: false
+    propagatable: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/add/AuthorAddDeprecatedAnnotation.kt
     visible: false
+    propagatable: false

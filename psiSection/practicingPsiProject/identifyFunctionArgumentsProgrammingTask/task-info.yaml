@@ -5,11 +5,16 @@ files:
     visible: true
   - name: test/org/jetbrains/academy/plugin/course/dev/project/Tests.kt
     visible: false
+    propagatable: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/RefactorDataClassAction.kt
     visible: false
+    propagatable: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/ui/RefactorPanelFactory.kt
     visible: false
+    propagatable: false
   - name: src/main/resources/META-INF/plugin.xml
     visible: false
+    propagatable: false
   - name: src/main/kotlin/org/jetbrains/academy/plugin/course/dev/project/Task.kt
     visible: false
+    propagatable: false
