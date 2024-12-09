@@ -1,3 +1,7 @@
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.intellij.platform.gradle.extensions.IntelliJPlatformDependenciesExtension
+import org.jetbrains.intellij.platform.gradle.extensions.IntelliJPlatformExtension
+import org.jetbrains.intellij.platform.gradle.extensions.IntelliJPlatformRepositoriesExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun gradleProperties(key: String) = providers.gradleProperty(key)
@@ -5,20 +9,15 @@ fun gradleProperties(key: String) = providers.gradleProperty(key)
 group = gradleProperties("courseGroup").get()
 version = gradleProperties("courseVersion").get()
 
+val ideaVersion: String by project
+
 plugins {
     java
+    `java-test-fixtures`
     val kotlinVersion = "1.9.21"
     id("org.jetbrains.kotlin.jvm") version kotlinVersion apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.1"
-    id("org.jetbrains.intellij") version "1.16.1"
-}
-
-intellij {
-    version.set("2023.1.2")
-    type.set("IC")
-    plugins.set(listOf("com.intellij.java", "org.jetbrains.kotlin"))
-    downloadSources.set(true)
-    updateSinceUntilBuild.set(true)
+    id("org.jetbrains.intellij.platform") version "2.1.0" apply false
 }
 
 val detektReportMerge by tasks.registering(io.gitlab.arturbosch.detekt.report.ReportMergeTask::class) {
@@ -49,15 +48,7 @@ configure(subprojects) {
     apply {
         plugin("java")
         plugin("kotlin")
-        plugin("org.jetbrains.intellij")
-    }
-
-    intellij {
-        version.set("2023.1.2")
-        type.set("IC")
-        plugins.set(listOf("com.intellij.java", "org.jetbrains.kotlin"))
-        downloadSources.set(true)
-        updateSinceUntilBuild.set(true)
+        plugin("java-test-fixtures")
     }
 
     // Configure detekt
@@ -124,6 +115,26 @@ configure(subprojects) {
 
 // We have to store tests inside test folder directly
 configure(subprojects.filter { it.name != "common" }) {
+    apply {
+        plugin("org.jetbrains.intellij.platform")
+    }
+
+    repositories {
+        intellijPlatform {
+            defaultRepositories()
+            jetbrainsRuntime()
+        }
+    }
+
+    intellijPlatform {
+        projectName = "IDEDevelopmentCourseDemo"
+        pluginConfiguration {
+            id = "jetbrains.academy.plugin.course.dev.ui.demo"
+            name = "IDE Development Course Demo"
+        }
+        instrumentCode = false
+        buildSearchableOptions = false
+    }
 
     val jvmVersion = gradleProperties("jvmVersion").get()
     tasks {
@@ -137,9 +148,6 @@ configure(subprojects.filter { it.name != "common" }) {
             sourceCompatibility = jvmVersion
             targetCompatibility = jvmVersion
         }
-
-        withType<org.jetbrains.intellij.tasks.BuildSearchableOptionsTask>()
-            .forEach { it.enabled = false }
     }
 
     sourceSets {
@@ -148,7 +156,15 @@ configure(subprojects.filter { it.name != "common" }) {
     }
 
     dependencies {
+        intellijPlatform {
+            intellijIdeaCommunity(ideaVersion, useInstaller = false)
+            jetbrainsRuntime()
+            bundledPlugins("com.intellij.java", "org.jetbrains.kotlin")
+            testFramework(TestFrameworkType.Bundled)
+        }
+
         implementation(project(":common"))
+        testImplementation(testFixtures(project(":common")))
     }
 
     tasks.register<Copy>("restoreOriginalFiles") {
@@ -157,9 +173,19 @@ configure(subprojects.filter { it.name != "common" }) {
     }
 
     tasks {
-        runIde {
+        "runIde" {
             dependsOn("restoreOriginalFiles")
         }
     }
-
 }
+
+// Gradle doesn't generate type-safe accessors since `org.jetbrains.intellij.platform` plugin is not applied in the root project.
+// Let's create them manually
+fun Project.intellijPlatform(configure: Action<IntelliJPlatformExtension>) =
+    (this as ExtensionAware).extensions.configure("intellijPlatform", configure)
+
+fun RepositoryHandler.intellijPlatform(configure: Action<IntelliJPlatformRepositoriesExtension>) =
+    (this as ExtensionAware).extensions.configure("intellijPlatform", configure)
+
+fun DependencyHandler.intellijPlatform(configure: Action<IntelliJPlatformDependenciesExtension>) =
+    (this as ExtensionAware).extensions.configure("intellijPlatform", configure)
